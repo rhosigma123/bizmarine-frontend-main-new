@@ -1,0 +1,324 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.fsdf {
+  color: hsl(0, 0%, 98%);
+}
+
+@layer base {
+  :root {
+    --background: 0, 0%, 98%;
+    --foreground: 240 10% 3.9%;
+    --card: 0, 0%, 98%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0, 0%, 98%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 180, 55%, 40%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 0, 0%, 26%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 0, 0%, 26%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 0, 0%, 26%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 180, 55%, 40%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 0 0% 95%;
+    --card: 24 9.8% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 180, 55%, 40%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 180, 55%, 40%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+:root {
+  --rangeSlider: hsl(180, 55%, 40%);
+  --sliderBalls: #fff;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: hsl(180, 55%, 40%);
+  border-radius: 50% !important;
+  height: 40px !important;
+  width: 40px !important;
+}
+
+.googleReviewSwiper .swiper-button-prev {
+  background-color: #4e8bf0 !important;
+  left: 5px;
+}
+
+.googleReviewSwiper {
+  padding: 0 30px !important;
+}
+
+.googleReviewSwiper > div:last-child {
+  background-color: #4e8bf0 !important;
+  right: 5px;
+}
+
+@media screen and (max-width: 640px) {
+  .googleReviewSwiper {
+    padding: 0 !important;
+  }
+
+  .googleReviewSwiper .swiper-button-prev,
+  .googleReviewSwiper > div:last-child {
+    background: transparent !important;
+    color: #4e8bf0;
+    font-weight: bold;
+  }
+
+  .googleReviewSwiper .swiper-button-prev {
+    left: -5px;
+  }
+
+  .googleReviewSwiper > div:last-child {
+    right: -5px;
+  }
+}
+
+.range-slider {
+  margin: auto;
+  text-align: center;
+  position: relative;
+  height: 110px;
+}
+
+.range-slider svg,
+.range-slider input[type="range"] {
+  position: absolute;
+  left: 0;
+  bottom: 8px;
+}
+
+input[type="number"] {
+  /* border: 2px solid #ddd; */
+  /* text-align: center; */
+  /* font-size: 1.6em; */
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"]:invalid,
+input[type="number"]:out-of-range {
+  border: 2px solid #ff6347;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: var(--rangeSlider);
+}
+
+input[type="range"]:focus::-ms-fill-lower {
+  background: var(--rangeSlider);
+}
+
+input[type="range"]:focus::-ms-fill-upper {
+  background: var(--rangeSlider);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: var(--rangeSlider);
+  border-radius: 1px;
+  box-shadow: none;
+  border: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  z-index: 2;
+  position: relative;
+  box-shadow: 0px 0px 0px #000;
+  border: 2px solid var(--rangeSlider);
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
+  background: var(--sliderBalls);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7px;
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: var(--rangeSlider);
+  border-radius: 1px;
+  box-shadow: none;
+  border: 0;
+}
+
+input[type="range"]::-moz-range-thumb {
+  z-index: 2;
+  position: relative;
+  box-shadow: 0px 0px 0px #000;
+  border: 2px solid var(--rangeSlider);
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
+  background: var(--sliderBalls);
+  cursor: pointer;
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+input[type="range"]::-ms-fill-lower,
+input[type="range"]::-ms-fill-upper {
+  background: var(--rangeSlider);
+  border-radius: 1px;
+  box-shadow: none;
+  border: 0;
+}
+
+input[type="range"]::-ms-thumb {
+  z-index: 2;
+  position: relative;
+  box-shadow: 0px 0px 0px #000;
+  border: 2px solid var(--rangeSlider);
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
+  background: var(--sliderBalls);
+  cursor: pointer;
+}
+
+figure {
+  width: 800px;
+  height: 500px;
+  overflow: hidden;
+  border: 3px solid #fff;
+  position: relative;
+}
+
+figure img {
+  max-width: 100%;
+  min-width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Css of new UI */
+
+.biz__container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .biz__container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .biz__container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .biz__container {
+    width: 1000px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .biz__container {
+    width: 1100px;
+  }
+}
+
+@media (min-width: 1700px) {
+  .biz__container {
+    width: 1300px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .biz__container {
+    width: 1420px;
+  }
+}
+
+.herobanner {
+  background: linear-gradient(
+      270deg,
+      rgba(0, 0, 0, 0) 34.15%,
+      rgba(0, 0, 0, 0.8) 91.37%
+    ),
+    lightgray 25% / cover no-repeat;
+}
