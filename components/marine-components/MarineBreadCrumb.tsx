@@ -28,8 +28,8 @@ const MarineBreadCrumb = () => {
   }));
 
   return (
-    <Breadcrumb>
-      <BreadcrumbList className="container p-5 md:py-5">
+    <Breadcrumb className="bg-lightgray">
+      <BreadcrumbList className="container p-5 md:py-5 w-full ">
         <BreadcrumbItem className="text-base lg:text-xl font-semibold">
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>

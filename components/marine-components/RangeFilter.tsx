@@ -35,6 +35,7 @@ const RangeSliderFilter: React.FC = () => {
           />
         </div>
       </CollapsibleTrigger>
+      
       <CollapsibleContent className="grid">
         <div className="range-slider">
           <Input
@@ -76,9 +77,13 @@ const RangeSliderFilter: React.FC = () => {
             </div>
           </span>
         </div>
-        <Button variant={"outline"}>Apply</Button>
+        <Button variant={"outline"} className="hover:text-primary border border-transparent hover:border-primary hover:bg-transparent  bg-primary text-white ">Apply</Button>
       </CollapsibleContent>
+
+   
+      
     </Collapsible>
+    
   );
 };
 

@@ -2,6 +2,7 @@
 import React, { CSSProperties, useContext, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ProductGridCard from "./ProductGridCard";
+import NewProductGridCard from "./NewProductGridCard";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
@@ -25,6 +26,7 @@ const ProductSlider = () => {
   console.log("Reading slider products data", data?.products);
 
   return (
+    <>
     <Swiper
       slidesPerView={6}
       spaceBetween={10}
@@ -57,10 +59,15 @@ const ProductSlider = () => {
     >
       {data?.products.map((products, index) => (
         <SwiperSlide key={index}>
-          <ProductGridCard data={products} />
+          {/* <ProductGridCard data={products} /> */}
+          <NewProductGridCard data={products}/>
         </SwiperSlide>
       ))}
     </Swiper>
+
+    
+
+    </>
   );
 };
 

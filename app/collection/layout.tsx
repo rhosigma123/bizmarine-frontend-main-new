@@ -8,7 +8,6 @@ const CollectionLayout = ({
 }>) => {
   return (
     <>
-      <MarineBreadCrumb />
       {children}
     </>
   );

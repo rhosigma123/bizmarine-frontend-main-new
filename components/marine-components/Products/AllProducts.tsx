@@ -57,7 +57,10 @@ const AllProducts = () => {
     <section className="container gap-5 grid lg:grid-cols-[1fr_3fr] p-5 md:py-10">
       <AllFilters />
       <div className="grid gap-5 content-start">
-        <h2 className="text-2xl font-medium capitalize">Products</h2>
+        <span className="w-fit relative h-auto flex flex-col gap-1 ">
+            <h2 className="text-3xl text-primary font-medium capitalize">Products</h2>
+            <p className="text-lg  font-medium text-secondary ">Showing {} Of {data.length} result</p>
+        </span>
         <SortView
           toggleGridHandler={toggleGridHandler}
           toggleListHandler={toggleListHandler}

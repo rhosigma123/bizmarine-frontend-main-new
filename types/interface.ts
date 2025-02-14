@@ -69,6 +69,7 @@ export interface Info {
 }
 
 export interface Products {
+    whishlist: any;
     id: number;
     name: string;
     slug: string;
@@ -172,6 +173,34 @@ export interface HomePageData {
     testimonials: Testimonials[];
 }
 
+export interface FilterSectionType{
+    title:string,
+    cardcss?:string,
+    
+}
+
+
+export interface ViewproductCard{
+    image:string,
+
+}
+export interface CategoryCardInterface{
+    slug: any;
+    alt_tag: any;
+    image:string,
+    name:string,
+    totalProducts:string
+}
+export interface WarrentyCard{
+    productImage:string,
+    brandImage:string,
+    description:string
+}
+
+export interface Aboutbannerinterfce{
+    image:string,
+    title:string
+}
 
 export interface Clients {
     alt_logo: string;
@@ -192,6 +221,10 @@ export interface FAQ {
 }
 export interface CertificateProps {
     data: Certificate
+}
+
+export interface categorycard{
+    data:CategoryCardInterface
 }
 export interface ClientsProps {
     data: Clients
@@ -224,6 +257,8 @@ export interface CategoryProps {
 }
 export interface ProductGridCardProps {
     data: Products;
+    css?:string
+    wishlist:boolean
 }
 export interface ProductListCardProps {
     data: Products;

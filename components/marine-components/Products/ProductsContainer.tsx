@@ -14,7 +14,7 @@ const ProductsContainer: React.FC<ProductsCardProps> = ({
 
   return (
     <div
-      className={`grid gap-2 sm:gap-5 ${
+      className={`grid gap-2 sm:gap-5 min-h-[40vh] ${
         gridView ? "grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" : ""
       }`}
     >

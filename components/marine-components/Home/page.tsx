@@ -11,6 +11,11 @@ import KeyPointsSection from "@/components/marine-components/key-points/KeyPoint
 import ProductSliderContainer from "@/components/marine-components/Products/ProductSliderContainer";
 import { HomeContext } from "@/app/Context/HomeContext";
 import apiClient from "@/config/config";
+import ViewProductSection from "./ViewProductSection";
+import MarineShopbanner from "./MarineShopbanner";
+import CategorySection from "../Categories/CategorySection";
+import ProductFIlrterSection from "../Products/ProductFIlrterSection";
+import WarrentySection from "./WarrentySection";
 
 const Home = () => {
   const [data, setData] = useState<HomePageData | null>(null);
@@ -28,23 +33,40 @@ const Home = () => {
     fetchData();
   }, []);
 
-  if (!data) {
-    return (
-      <h1 className="h-[calc(100vh-150px)] grid place-content-center">
-        <TbLoader2 className="text-primary animate-spin text-2xl" />
-      </h1>
-    );
-  }
+  // if (!data) {
+  //   return (
+  //     <h1 className="h-[calc(100vh-150px)] grid place-content-center">
+  //       <TbLoader2 className="text-primary animate-spin text-2xl" />
+  //     </h1>
+  //   );
+  // }
 
   return (
-    <HomeContext.Provider value={data}>
+    <>
+      <HomeContext.Provider value={data}>
       <HeroSection />
+
+      
+      <ViewProductSection />
+      <ProductFIlrterSection title={"POPULAR PRODUCTS"} cardcss={" h-[150px] md:h-[200px] "} />
+      <MarineShopbanner />
+      <CategorySection title={"Top Industrial and Marine Automation Categories"} />
+      <ProductFIlrterSection title={"Marine Automation Products"} cardcss={" h-[150px] md:h-[200px] "} />
+      <MarineShopbanner />
+      <CategorySection title={"Top Industrial and Marine Automation Categories"} />
+
+      <ProductFIlrterSection title={"POPULAR PRODUCTS"}  />
+      <MarineShopbanner />
+
+      <WarrentySection/>
+      
+
       <KeyPointsSection />
       <CategorySliderContainer />
       <ProductSliderContainer />
-      <GoogleReviewsSection />
       <ClientSliderContainer />
     </HomeContext.Provider>
+    </>
   );
 };
 

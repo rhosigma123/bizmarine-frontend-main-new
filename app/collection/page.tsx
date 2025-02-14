@@ -2,6 +2,9 @@ import CollectionsContainer from "@/components/marine-components/Collections/Col
 import React from "react";
 import { Metadata } from "next";
 
+import CommonBanner from "@/components/marine-components/Common/CommonBanner";
+import MarineBreadCrumb from "@/components/marine-components/MarineBreadCrumb";
+
 export const metadata: Metadata = {
   title: "Categories Biz Marine",
   description: "",
@@ -24,6 +27,8 @@ export const metadata: Metadata = {
 const Collections = () => {
   return (
     <>
+      <CommonBanner/>
+      <MarineBreadCrumb />
       <CollectionsContainer />
     </>
   );

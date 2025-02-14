@@ -7,6 +7,7 @@ import { Categories } from "@/types/interface";
 
 const AllFilters = () => {
   const [brandsData, setBrandsData] = useState(null);
+  const [availabilityData, setAvailabilityData] = useState(null);
   const [categoryData, setCategoryData] = useState<Categories[] | null>([]);
 
   useEffect(() => {
@@ -36,6 +37,7 @@ const AllFilters = () => {
   return (
     <div className="hidden lg:grid gap-3 h-fit lg:sticky top-0 bg-background border rounded-md p-5 self-start">
       <CategoryCollapsibel data={categoryData} name="Categories" />
+      <CategoryCollapsibel data={availabilityData} name="Availability" />
       <CategoryCollapsibel data={brandsData} name="Brands" />
       <RangeSliderFilter />
     </div>

@@ -4,6 +4,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { BiCartDownload } from "react-icons/bi";
 import NumberOfProducts from "../NumberOfProducts";
 import { CartContext } from "@/app/Context/CartContext";
+import { CiHeart } from "react-icons/ci";
 
 interface Product {
   id: number;
@@ -86,13 +87,21 @@ const AddToCartBtn: React.FC<AddToCartBtnProps> = ({ className, product }) => {
           onRemove={handleRemoveFromCart} // Optional: if you have a remove button in NumberOfProducts
         />
       ) : (
-        <Button
-          onClick={handleAddToCart}
-          className={`${className} self-end hover:bg-green-600 transition-all ease-linear flex items-center justify-center gap-2`}
-        >
-          <BiCartDownload className="text-xl hidden sm:block" />
-          Add to Cart
-        </Button>
+        // <Button
+        //   onClick={handleAddToCart}
+        //   className={`${className} self-end hover:bg-green-600 transition-all ease-linear flex items-center justify-center gap-2`}
+        // >
+        //   <BiCartDownload className="text-xl hidden sm:block" />
+        //   Add to Cart
+        // </Button>
+        <span className="w-full relative gap-4 h-auto flex items-center justify-between ">
+          <Button  onClick={handleAddToCart}className="w-full relative py-1 px-3 rounded-full bg-primary text-white hover:text-primary hover:bg-white border border-primary flex items-senter justify-center cursor-pointer">
+            Add to Cart
+          </Button>
+          <span className="w-fit relative h-fit rounded-full bg-heartbg p-2">
+            <CiHeart className="text-[25px] text-black cursor-pointer " />
+          </span>
+        </span>
       )}
     </>
   );

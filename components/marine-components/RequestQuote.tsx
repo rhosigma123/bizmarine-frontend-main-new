@@ -105,21 +105,21 @@ const RequestQuote = () => {
               className={`h-[3px] absolute ${
                 currentStep > 1
                   ? "bg-primary text-white"
-                  : "bg-secondary text-black"
+                  : "bg-secondary text-primary"
               } w-1/2 -z-10`}
             />
             <hr
               className={`h-[3px] absolute right-0 ${
                 currentStep > 2
                   ? "bg-primary text-white"
-                  : "bg-secondary text-black"
+                  : "bg-secondary text-primary"
               } w-1/2 -z-10`}
             />
             <span
               className={`rounded-full ${
                 currentStep >= 1
                   ? "bg-primary text-white"
-                  : "bg-secondary text-black"
+                  : "bg-secondary text-primary"
               } flex items-center justify-center text-xl h-16 w-16`}
             >
               01
@@ -128,7 +128,7 @@ const RequestQuote = () => {
               className={`rounded-full ${
                 currentStep >= 2
                   ? "bg-primary text-white"
-                  : "bg-secondary text-black"
+                  : "bg-white border border-primary text-primary "
               } flex items-center justify-center text-xl h-16 w-16`}
             >
               02
@@ -137,7 +137,7 @@ const RequestQuote = () => {
               className={`rounded-full ${
                 currentStep >= 3
                   ? "bg-primary text-white"
-                  : "bg-secondary text-black"
+                  : "bg-white border border-primary text-primary "
               } flex items-center justify-center text-xl h-16 w-16`}
             >
               03

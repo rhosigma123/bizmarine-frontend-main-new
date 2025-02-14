@@ -20,7 +20,7 @@ const GoolgeReviewsCard: React.FC<TestimonialsCardProps> = ({ data }) => {
           height={100}
           alt={data.alt_tag}
           loading="lazy"
-        />
+        /> 
         <strong className="text-lg text-secondary-foreground font-medium">
           {data.name}
         </strong>

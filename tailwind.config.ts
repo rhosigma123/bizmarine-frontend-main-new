@@ -21,6 +21,10 @@ const config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        heartbg:"hsl(var(--heart-bg))",
+        lightgray:"hsl(var(--light-gray))",
+
+
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -70,6 +74,9 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+  },
+  corePlugins: {
+    mixBlendMode: true, 
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config

@@ -4,6 +4,9 @@ import React, { useEffect, useState } from "react";
 import { BrandsProps } from "@/types/interface";
 import axios from "@/config/config";
 import { TbLoader2 } from "react-icons/tb";
+import ViewProductSection from "../Home/ViewProductSection";
+import HeroSection from "../HeroSection";
+import MarineShopbanner from "../Home/MarineShopbanner";
 
 const BrandsContainer = () => {
   const [data, setData] = useState<BrandsProps[] | null>(null);
@@ -30,11 +33,16 @@ const BrandsContainer = () => {
   }
 
   return (
-    <div className="container grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 p-5 pb-10 md:py-10">
-      {data.map((brand: any) => (
-        <BrandsCard key={brand.id} data={brand} />
-      ))}
-    </div>
+    <>
+      <div className="container grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 p-5 pb-10 md:py-10">
+        {data.map((brand: any) => (
+          <BrandsCard key={brand.id} data={brand} />
+        ))}
+      </div>
+      <MarineShopbanner/>
+      <HeroSection/>
+      <ViewProductSection/>
+    </>
   );
 };
 

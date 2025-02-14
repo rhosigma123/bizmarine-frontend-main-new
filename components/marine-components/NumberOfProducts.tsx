@@ -47,7 +47,7 @@ const NumberOfProducts: React.FC<NumberOfProductsProps> = ({
   };
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center h-auto w-full">
       <Button
         className="hover:bg-primary hover:opacity-90"
         onClick={handleDecrement}
