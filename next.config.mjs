@@ -31,6 +31,16 @@ const nextConfig = {
     });
     return config;
   },
+
+  async redirects() {
+    return [
+      {
+        source: "/order-history",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -110,8 +110,8 @@ const Footer = () => {
 
   return (
     <>
-      <footer className=" bg-[#222222] p-5 md:p-10 border-t ">
-        <div className="  pb-5 flex justify-start md:justify-between px-0 items-center gap-5 flex-wrap border-b border-white ">
+      <footer className=" bg-[#222222]  md:p-10 border-t  ">
+        <div className=" biz__container  pb-5 flex justify-start md:justify-between px-0 items-center gap-5 flex-wrap border-b border-white ">
           <div className="grid gap-2">
             <h2 className=" text-xl md:text-2xl lg:text-3xl text-primary  font-semibold">
               Newsletter
@@ -123,7 +123,7 @@ const Footer = () => {
           <NewsLetterInput />
         </div>
 
-        <section className="w-full relative h-auto py-10   items-start justify-between grid grid-cols-1 sm:grid-cols-[1fr_auto] md:grid-cols-[1fr_1fr_1fr] lg:grid-cols-[2fr_1fr_1fr_1fr] gap-y-10  gap-x-10 ">
+        <section className="w-full  biz__container relative h-auto py-10   items-start justify-between grid grid-cols-1 sm:grid-cols-[1fr_auto] md:grid-cols-[1fr_1fr_1fr] lg:grid-cols-[2fr_1fr_1fr_1fr] gap-y-10  gap-x-10 ">
           <div className="w-full relative h-auto flex flex-col items-start justify-start  lg:pr-40 gap-10">
             <Image
               src="/bismarineFooterLogo.png"

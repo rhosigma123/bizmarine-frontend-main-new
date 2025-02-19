@@ -12,7 +12,7 @@ const ProductGridCard: React.FC<ProductGridCardProps> = ({
   css,
   wishlist,
 }) => {
-  console.log(data,"products data")
+  console.log(data, "products data");
   return (
     <div className="group bg-white p-2 md:p-3 justify-items-center border rounded-md grid gap-2 h-auto md:gap-5">
       <Link

@@ -16,7 +16,7 @@ import ContentLoader from "react-content-loader";
 const SingleProduct = () => {
   const params = useParams<{ slug: string }>();
   const [data, setData] = useState<Products | null>(null);
-  const [RelatedProducts, setRelatedproducts] = useState<Products | null>(null);
+  const [RelatedProducts, setRelatedproducts] = useState<Products | []>([]);
   const [currentFilter1, setCurrentFilter1] = useState({
     newarrival: true,
     featured: false,
@@ -133,7 +133,7 @@ const SingleProduct = () => {
             </div>
           </section>
           <div className="grid gap-5 content-start">
-            <ProductRigth product={data} />
+            <ProductRigth productDetailtype={data}  />
           </div>
         </div>
         <div className=" grid gap-5 rounded-xl ">
@@ -219,15 +219,15 @@ const SingleProduct = () => {
           </div>
         </div>
 
-        <ReviewSection />
+        {/* <ReviewSection /> */}
       </div>
-      {RelatedProducts?.length <= 0 && (
+      {/* {RelatedProducts?.length <= 0 && (
         <ProductFIlrterSection
           title={"RELATED PRODUCTS"}
           currentfilter={currentFilter1}
           setcurrentfilter={setCurrentFilter1}
         />
-      )}
+      )} */}
       {/* <MarineShopbanner /> */}
     </>
   );

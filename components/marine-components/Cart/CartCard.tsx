@@ -51,7 +51,7 @@ const CartCard: React.FC<{
         className=" w-full  sm:w-[80px] h-[120px] sm:h-[80px] object-cover border rounded-md"
       />
       <Link
-        href={`/products/${item.id}`}
+        href={`/products/${`${item.name}`.split(" ").join("-").toLocaleLowerCase()}`}
         className="underline text-primary font-bold line-clamp-3 text-base"
       >
         {item.name}

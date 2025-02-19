@@ -7,17 +7,18 @@ import { CartContext } from "@/app/Context/CartContext";
 import { CiHeart } from "react-icons/ci";
 import { useWishlist } from "@/app/Context/WishlistContext";
 import { IoHeartDislikeOutline } from "react-icons/io5";
-interface Product {
-  id: number;
-  name: string;
-  image: string;
-  slug?:string,
-  price?:string 
-}
+import { Products, WishlistItem } from "@/types/interface";
+// interface Product {
+//   id: number;
+//   name: string;
+//   image: string;
+//   slug?:string,
+//   price?:string 
+// }
 
 interface AddToCartBtnProps {
   className?: string;
-  product: Product;
+  product: WishlistItem;
 }
 
 const WishlistAddtoCard: React.FC<AddToCartBtnProps> = ({ className, product }) => {
@@ -36,7 +37,7 @@ const WishlistAddtoCard: React.FC<AddToCartBtnProps> = ({ className, product }) 
   useEffect(() => {
     const existingCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
     const existingProduct = existingCart.find(
-      (item: Product) => item.id === product.id
+      (item: Products) => item.id === product.id
     );
     if (existingProduct) {
       setIsInCart(true);
@@ -50,7 +51,7 @@ const WishlistAddtoCard: React.FC<AddToCartBtnProps> = ({ className, product }) 
   const handleAddToCart = () => {
     const existingCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
     const existingProductIndex = existingCart.findIndex(
-      (item: Product) => item.id === product.id
+      (item: Products) => item.id === product.id
     );
 
     if (existingProductIndex !== -1) {
@@ -77,7 +78,7 @@ const WishlistAddtoCard: React.FC<AddToCartBtnProps> = ({ className, product }) 
   const handleRemoveFromCart = () => {
     const existingCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
     const updatedCart = existingCart.filter(
-      (item: Product) => item.id !== product.id
+      (item: Products) => item.id !== product.id
     );
 
     // Update local storage

@@ -7,17 +7,18 @@ import { CartContext } from "@/app/Context/CartContext";
 import { CiHeart } from "react-icons/ci";
 import { useWishlist } from "@/app/Context/WishlistContext";
 import { IoHeartDislikeOutline } from "react-icons/io5";
-interface Product {
-  id: number;
-  name: string;
-  image: string;
-  slug?:string,
-  price?:string 
-}
+import { Products } from "@/types/interface";
+// interface Product {
+//   id: number;
+//   name: string;
+//   image: string;
+//   slug?:string,
+//   price?:string
+// }
 
 interface AddToCartBtnProps {
   className?: string;
-  product: Product;
+  product: Products;
 }
 
 const AddToCartBtn: React.FC<AddToCartBtnProps> = ({ className, product }) => {
@@ -36,14 +37,14 @@ const AddToCartBtn: React.FC<AddToCartBtnProps> = ({ className, product }) => {
   useEffect(() => {
     const existingCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
     const existingProduct = existingCart.find(
-      (item: Product) => item.id === product.id
+      (item: Products) => item.id === product.id
     );
     if (existingProduct) {
       setIsInCart(true);
       setQuantity(existingProduct.quantity);
     } else {
       setIsInCart(false);
-      setQuantity(1); 
+      setQuantity(1);
     }
   }, [product.id]);
 

@@ -35,33 +35,34 @@ export interface Brand {
   updated_at: string;
   order: number;
 }
-export interface Product {
+export interface productDetailInterfce {
   id: number;
-  category: Category; // Allow both object and number
-  brand: Brand; // Same for brand if needed
   name: string;
-  price: number | null;
-  image: string | null;
-  alt_tag: string;
-  description: string;
-  content: string;
-  quantity: number;
-  sku: string;
   slug: string;
+  order: number;
+  description: string;
+  quantity: number;
+  content: string;
+  brand: Brand; // Updated to use the Brand interface
+  price: number;
+  category: Category; // Updated to use the Category interface
+  sku: string;
+  image: string;
+  alt_tag: string;
   created_at: string;
   updated_at: string;
-  order: number;
+  whishlist?: any;
 }
 
 export interface SingleProductResponse {
-  product: Product;
+  productDetailtype: productDetailInterfce;
 }
 
-function ProductRigth({ product }: SingleProductResponse) {
+function ProductRigth({ productDetailtype }: SingleProductResponse) {
   const { cartItemCount, addToCart, removeFromCart } = useContext(CartContext);
   const [isInCart, setIsInCart] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  console.log(product);
+  console.log(productDetailtype);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
@@ -72,7 +73,7 @@ function ProductRigth({ product }: SingleProductResponse) {
   useEffect(() => {
     const existingCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
     const existingProduct = existingCart.find(
-      (item: Product) => item.id === product.id
+      (item: productDetailInterfce) => item.id === productDetailtype.id
     );
     if (existingProduct) {
       setIsInCart(true);
@@ -81,12 +82,12 @@ function ProductRigth({ product }: SingleProductResponse) {
       setIsInCart(false);
       setQuantity(1); // Reset quantity if not in cart
     }
-  }, [product.id]);
+  }, [productDetailtype.id]);
 
   const handleAddToCart = () => {
     const existingCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
     const existingProductIndex = existingCart.findIndex(
-      (item: Product) => item.id === product.id
+      (item: productDetailInterfce) => item.id === productDetailtype.id
     );
 
     if (existingProductIndex !== -1) {
@@ -94,11 +95,11 @@ function ProductRigth({ product }: SingleProductResponse) {
       existingCart[existingProductIndex].quantity += 1;
       setQuantity(existingCart[existingProductIndex].quantity);
       console.log(
-        `Increased quantity of ${product.name} to ${existingCart[existingProductIndex].quantity}`
+        `Increased quantity of ${productDetailtype.name} to ${existingCart[existingProductIndex].quantity}`
       );
     } else {
       // If product doesn't exist, add it to the cart
-      const newProduct = { ...product, quantity: 1 };
+      const newProduct = { ...productDetailtype, quantity: 1 };
       existingCart.push(newProduct);
       setIsInCart(true);
     }
@@ -106,20 +107,20 @@ function ProductRigth({ product }: SingleProductResponse) {
     localStorage.setItem("cartItems", JSON.stringify(existingCart));
 
     // Use the addToCart function from context
-    addToCart({ ...product, quantity: 1 }); // Adjust this as necessary for your data structure
+    addToCart({ ...productDetailtype, quantity: 1 }); // Adjust this as necessary for your data structure
   };
 
   const handleRemoveFromCart = () => {
     const existingCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
     const updatedCart = existingCart.filter(
-      (item: Product) => item.id !== product.id
+      (item: productDetailInterfce) => item.id !== productDetailtype.id
     );
 
     // Update local storage
     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
 
     // Use the removeFromCart function from context
-    removeFromCart(product.id);
+    removeFromCart(productDetailtype.id);
     setIsInCart(false); // Update UI state
   };
 
@@ -144,12 +145,12 @@ function ProductRigth({ product }: SingleProductResponse) {
 
         <div
           className="w-full relative h-auto line-clamp-[20]"
-          dangerouslySetInnerHTML={{ __html: product.content }}
+          dangerouslySetInnerHTML={{ __html: productDetailtype.content }}
         />
 
         <div className="w-full  relaive h-auo flex items-center justify-start gap-5">
           <h2 className="text-meidum  text-primary text-4xl">
-            $ {product.price}
+            $ {productDetailtype.price}
           </h2>
           <span className="w-fit relative flex items-center gap-3 text-xl font-medium ">
             <AiOutlineCheckCircle className="text-[25px] text-primary" />
@@ -169,9 +170,9 @@ function ProductRigth({ product }: SingleProductResponse) {
             <option value="3">3</option>
             <option value="4">4</option>
           </select>
-          <div className="w-full gap-3 relative h-auto flex items-center justify-center">
+          <div className="w-full gap-1 2xl:gap-3 relative h-auto flex 2xl:flex-row flex-col items-center justify-center">
             <button
-              className={`w-full relative flex justify-center items-center gap-2 h-auto text-center text-white bg-primary py-2 rounded-xl    `}
+              className={`w-full relative flex justify-center items-center gap-2 h-auto text-center text-white bg-primary   py-2 px-4 rounded-xl    `}
               onClick={handleAddToCart}
             >
               {isInCart && <BsCart3 className="text-[22px] text-white" />}
@@ -179,7 +180,7 @@ function ProductRigth({ product }: SingleProductResponse) {
             </button>
             {isInCart && (
               <button
-                className={`w-fit relative flex justify-center items-center gap-2 h-auto text-center text-white bg-red-600 py-2 px-4 rounded-xl    `}
+                className={` relative flex justify-center 2xl:w-fit w-full items-center gap-2 h-auto text-center text-white bg-red-600 py-2 px-4 rounded-xl    `}
                 onClick={handleRemoveFromCart}
               >
                 Remove
@@ -230,8 +231,8 @@ function ProductRigth({ product }: SingleProductResponse) {
       </div>
       <div className="w-full relative h-auto flex gap-5  bg-white items-cente p-4 md:p-7  rounded-xl  justify-start">
         <Image
-          src={`${BASE_URL}${product.brand?.image}`}
-          alt={product.brand?.name}
+          src={`${BASE_URL}${productDetailtype.brand?.image}`}
+          alt={productDetailtype.brand?.name}
           height={400}
           width={500}
           className={
@@ -240,10 +241,10 @@ function ProductRigth({ product }: SingleProductResponse) {
         />
         <span className="flex items-start  flex-col gap-0">
           <h2 className="text-base font-semibold text-primary ">
-            {product.brand?.name}
+            {productDetailtype.brand?.name}
           </h2>
           <p className="text-sm text-secondary text-normal ">
-            {product.brand?.description}
+            {productDetailtype.brand?.description}
           </p>
         </span>
       </div>
