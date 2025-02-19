@@ -55,14 +55,15 @@ const SingleProductSlider = (props: any) => {
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2 w-full mb-3"
+        className="mySwiper2 w-full h-full  mb-3"
       >
         {swiperSlides.map((slide, index) => (
           <SwiperSlide
             key={index}
-            className="cursor-grab h-[500px] grid place-content-center"
+            className="cursor-grab h-full grid place-content-center "
           >
             {isClient && <App picture={props.picture} alt={props.alt} />}
+            {/* <Image    src={`${BASE_URL}${props.picture || ""}`} alt={props.alt} height={300} width={500} className="w-full relative h-full object-contain object-center items-center"/> */}
           </SwiperSlide>
         ))}
       </Swiper>
@@ -74,10 +75,10 @@ const SingleProductSlider = (props: any) => {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper w-full"
+        className="mySwiper w-full h-fit"
       >
         {swiperSlides.map((slide, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index} className="max-h-[150px]">
             <Image
               src={`${BASE_URL}${props.picture || ""}`}
               alt={props.alt}

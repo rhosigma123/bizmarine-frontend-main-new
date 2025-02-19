@@ -51,7 +51,7 @@ const CartMenu: React.FC = () => {
           className="shadow-none h-full flex gap-2 text-xl items-end bg-transparent hover:bg-transparent text-secondary-foreground w-fit justify-self-end"
           onClick={fetchCartItems}
         >
-          <CartBtn cartItemCount={cartItems.length} />
+          <CartBtn />
           <span className="hidden md:block text-lg">Cart</span>
         </Button>
       </SheetTrigger>

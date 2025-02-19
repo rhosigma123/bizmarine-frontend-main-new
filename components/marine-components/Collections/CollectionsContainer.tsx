@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CollectionCard from "./CollectionCard";
 import { Categories } from "@/types/interface";
 import axios from "@/config/config";
@@ -8,9 +8,12 @@ import CategoryCard from "../Categories/CategoryCard";
 import ViewProductSection from "../Home/ViewProductSection";
 import MarineShopbanner from "../Home/MarineShopbanner";
 import HeroSection from "../HeroSection";
+import ContentLoader from "react-content-loader";
+
 
 const CollectionsContainer = () => {
   const [data, setData] = useState<Categories[] | null>([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,25 +30,47 @@ const CollectionsContainer = () => {
 
   if (!data) {
     return (
-      <h1 className="h-[calc(100vh-150px)] grid place-content-center">
-        <TbLoader2 className="text-primary animate-spin text-2xl" />
-      </h1>
+      <section className="w-full relative h-fit biz__container ">
+        <ContentLoader viewBox="0 0 500 300" height={"100%"} width={"100%"}>
+          <rect x="19" y="64" rx="0" ry="0" width="465" height="200" />
+          <rect x="18" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="182" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="343" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="18" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="182" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="343" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="18" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="182" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="343" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="18" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="182" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="343" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="18" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="182" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="343" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="18" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="182" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="343" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="19" y="64" rx="0" ry="0" width="465" height="200" />
+        </ContentLoader>
+      </section>
     );
   }
 
   return (
     <>
-      <div className="biz__container grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 p-5 pb-10 md:py-10">
-        {[1, 3, 5, 6, 5, 6].map((category: any) => (
+      <div className="biz__container grid grid-cols-2  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 p-5 pb-10 md:py-10">
+        {data.map((category: any,index) => (
           // <CollectionCard key={category.id} data={category} />
           <CategoryCard
             data={{
-              slug: "",
-              image: "/product-image.png",
-              alt_tag: "",
-              name: "Ayan mansoor",
-              totalProducts: "120",
+              slug: `${category.slug}`,
+              image: `${category.image}`,
+              alt_tag: `${category.alt_tag}`,
+              name: `${category.name}`,
+              totalProducts: `${data.length}`,
             }}
+            key={index}
           />
         ))}
       </div>

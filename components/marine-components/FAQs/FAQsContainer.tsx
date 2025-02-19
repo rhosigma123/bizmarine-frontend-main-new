@@ -23,7 +23,7 @@ const FAQsContainer = () => {
 
   return (
     <div className="p-5 md:py-10 container grid gap-5">
-      <FAQsCard data={undefined} />
+      <FAQsCard   />
     </div>
   );
 };

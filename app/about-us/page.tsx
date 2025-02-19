@@ -2,27 +2,30 @@ import MarineBreadCrumb from "@/components/marine-components/MarineBreadCrumb";
 import React from "react";
 import AboutBanner from "@/components/marine-components/About/AboutBanner";
 import { Metadata } from "next";
-import WhyChoose from "./WhyChoose";
-import OurCertifications from "./OurCertifications";
+import WhyChoose from "@/components/marine-components/About/WhyChoose";
+import OurCertifications from "@/components/marine-components/About/OurCertifications";
 
-export const metadata: Metadata = {
-  title: "About Us Biz Marine",
-  description: "",
+
+
+import { mergeMetadata } from "../layout";
+export const metadata = mergeMetadata ( {
+  title: "About Us - Biz Marine | Marine Parts Supplier",
+  description: "Discover Biz Marine, your trusted e-commerce destination for high-quality marine parts. Learn about our commitment to reliable marine solutions.",
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
-    title: "About Us Biz Marine",
-    description: "",
+    title: "About Us - Biz Marine | Marine Parts Supplier",
+    description: "Explore our story at Biz Marine. We specialize in providing premium marine parts for all your maritime needs with superior customer service.",
     url: "/about-us",
     locale: "en_us",
-    siteName: "BizMarine",
+    siteName: "Biz Marine",
   },
   alternates: {
     canonical: `/about-us`,
   },
-};
+});
 
 const AboutUs = () => {
   return (

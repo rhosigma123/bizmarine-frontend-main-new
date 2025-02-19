@@ -4,6 +4,8 @@ import CategoryCollapsibel from "@/components/marine-components/Filters/MajorCat
 import RangeSliderFilter from "@/components/marine-components/RangeFilter";
 import axios from "@/config/config";
 import { Categories } from "@/types/interface";
+type CategoryAction = { type: "changed_name"; name: string };
+
 
 const AllFilters = () => {
   const [brandsData, setBrandsData] = useState(null);
@@ -35,11 +37,10 @@ const AllFilters = () => {
   }, []);
 
   return (
-    <div className="hidden lg:grid gap-3 h-fit lg:sticky top-0 bg-background border rounded-md p-5 self-start">
-      <CategoryCollapsibel data={categoryData} name="Categories" />
-      <CategoryCollapsibel data={availabilityData} name="Availability" />
+    <div className="hidden lg:grid gap-3 h-fit bg-background rounded-md  self-start">
+      <CategoryCollapsibel data={categoryData} name="Categories"  />
+      {/* <CategoryCollapsibel data={availabilityData} name="Availability" /> */}
       <CategoryCollapsibel data={brandsData} name="Brands" />
-      <RangeSliderFilter />
     </div>
   );
 };

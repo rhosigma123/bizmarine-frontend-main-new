@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProductGridCard from "./ProductGridCard";
 import ProductListCard from "./ProductListCard";
 import { Products, ProductsCardProps } from "@/types/interface";
+import NewProductGridCard from "./NewProductGridCard";
 
 const ProductsContainer: React.FC<ProductsCardProps> = ({
   data,
@@ -14,13 +15,13 @@ const ProductsContainer: React.FC<ProductsCardProps> = ({
 
   return (
     <div
-      className={`grid gap-2 sm:gap-5 min-h-[40vh] ${
-        gridView ? "grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" : ""
+      className={`grid gap-2 sm:gap-5  ${
+        gridView ? "w-full relative h-fit grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-3 xl:grid-cols-3  gap-5" : ""
       }`}
     >
       {gridView &&
         data.map((product) => (
-          <ProductGridCard key={product.id} data={product} />
+          <NewProductGridCard key={product.id} data={product} wishlist={false} />
         ))}
 
       {listView &&

@@ -5,7 +5,7 @@ import { Aboutbannerinterfce } from "@/types/interface";
 
 function AboutBanner({image,title}:Aboutbannerinterfce) {
   return (
-    <section className="w-full relative h-[40vh] sm:h-[40vh] md:h-[60vh] lg:h-[90vh] flex items-center ">
+    <section className="w-full relative h-[40vh] sm:h-[40vh] md:h-[60vh] lg:h-[80vh] flex items-center ">
       <Image
         src={`${image}`}
         alt="banner image"
@@ -14,7 +14,7 @@ function AboutBanner({image,title}:Aboutbannerinterfce) {
         width={1500}
       />
 
-      <div className="w-full absolute top-0 left-0 right-0 z-10 flex items-center  gap-5 flex-col  justify-end h-full  py-10  bg-gradient-to-t from-black/70 from-5% via-transparent via-90% ">
+      <div className="w-full absolute top-0 left-0 right-0 z-[2] flex items-center  gap-5 flex-col  justify-end h-full  py-10  bg-gradient-to-t from-black/70 from-5% via-transparent via-90% ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="40"

@@ -22,6 +22,13 @@ const NumberOfProducts: React.FC<NumberOfProductsProps> = ({
 }) => {
   const [count, setCount] = useState(initialQuantity);
 
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    setCount(Number(value));
+    console.log("Selected value:", value);
+  };
+
+
   useEffect(() => {
     updateQuantity(count);
     const existingCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
@@ -34,36 +41,36 @@ const NumberOfProducts: React.FC<NumberOfProductsProps> = ({
     }
   }, [count, product.id, updateQuantity]);
 
-  const handleIncrement = () => {
-    setCount((prevCount) => prevCount + 1);
-  };
-
-  const handleDecrement = () => {
-    if (count > 1) {
-      setCount((prevCount) => prevCount - 1);
-    } else {
-      onRemove();
-    }
-  };
-
+ 
   return (
-    <div className="flex items-center h-auto w-full">
-      <Button
-        className="hover:bg-primary hover:opacity-90"
+    <div className="flex items-center md:gap-2  h-auto w-full">
+      {/* <Button
+        className=" hidden sm:block hover:bg-primary hover:opacity-90"
         onClick={handleDecrement}
       >
         -
       </Button>
-      <span className="mx-2">{count}</span>
+      <span className=" hidden sm:block mx-2">{count}</span>
       <Button
-        className="hover:bg-primary hover:opacity-90"
+        className=" hidden sm:block hover:bg-primary hover:opacity-90"
         onClick={handleIncrement}
       >
         +
-      </Button>
+      </Button> */}
+
+      <select name="cars"
+      onChange={handleChange}
+      value={count}
+       className="px-3 mr-3  block  border  relative text-secondary py-1 ">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+
       <Button
         onClick={onRemove}
-        className="ml-2 hover:bg-primary hover:opacity-90"
+        className=" w-full  hover:bg-primary hover:opacity-90"
       >
         Remove
       </Button>

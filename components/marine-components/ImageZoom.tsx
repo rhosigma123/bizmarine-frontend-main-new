@@ -4,17 +4,17 @@ import { ImageZoom } from "react-responsive-image-zoom";
 
 const App = (props: any) => {
   return (
-    <ImageZoom
-      src={`${BASE_URL}${props.picture || ""}`}
-      defaultZoomFactor={2}
-      transition={0.5}
-      width={500}
-      height={500}
-      alt={props.alt}
-      className="h-[500px] "
-      imgClassName=" my-image-class"
-      debug={false}
-    />
+<ImageZoom
+  src={`${BASE_URL}${props.picture || ""}`}
+  defaultZoomFactor={2}
+  transition={0.5}
+  width="100%" // Ensure this is properly applied
+  height="100%"
+  alt={props.alt}
+  className="min-h-[500px] w-full h-full" // Ensure height is set
+  imgClassName="my-image-class object-cover w-full h-full" // Ensure the image itself takes full dimensions
+  debug={false}
+/>
   );
 };
 

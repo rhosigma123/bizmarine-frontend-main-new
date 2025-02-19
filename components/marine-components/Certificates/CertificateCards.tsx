@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { CertificateProps } from "@/types/interface";
+import { BASE_URL } from "@/config/config";
 
 const CertificateCards: React.FC<CertificateProps> = ({ data }) => {
   return (

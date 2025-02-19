@@ -1,7 +1,7 @@
 import { FAQ, FAQProps } from "@/types/interface";
 import React from "react";
 
-const FAQsCard: React.FC<FAQProps> = ({ data }) => {
+function FAQsCard() {
   return (
     <div className="p-3 border rounded-xl bg-secondary/40">
       <h3 className="text-xl text-primary font-bold">Question</h3>

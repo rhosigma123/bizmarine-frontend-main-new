@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import Image from "next/image";
 import { ViewproductCard } from "@/types/interface";
+import Link from "next/link";
 
 
 
@@ -28,9 +29,9 @@ function ViewProducts({image}:ViewproductCard) {
             Control Systems
           </h2>
 
-          <Button className="w-fit mt-3 relative h-auto flex items-center px-5 py-2 rounded-lg bg-primary  cursor-pointer hover:bg-white border border-transparent hover:border-primary hover:text-primary text-white">
+          <Link href={"/products"} className="w-fit mt-3 relative h-auto flex items-center px-5 py-2 rounded-lg bg-primary  cursor-pointer hover:bg-white border border-transparent hover:border-primary hover:text-primary text-white">
             View Details
-          </Button>
+          </Link>
         </span>
       </div>
     </section>

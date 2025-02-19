@@ -43,9 +43,15 @@ const ContactForm = () => {
 
   return (
     <form
-      className="grid md:grid-cols-2 gap-5 p-5 border rounded-xl"
+      className="flex w-full items-start flex-col gap-4 p-5 border rounded-xl" 
       onSubmit={handleSubmit(onSubmit)}
     >
+      <div className="w-full relative h-auo flex gap-3 flex-col">
+        <h2 className=" text-xl md:text-2xl lg:text-3xl font-medium text-primary h-auto py-2 border-b ">Connect with Bizmarine</h2>
+        <p className="text-base font-medium text-secondary">Fill out the form and we’ll reach back to you asap</p>
+      </div>
+
+      <section  className="grid md:grid-cols-2 gap-5 mt-5  w-full rounded-xl">
       <div className="flex flex-col gap-2">
         <label
           htmlFor="name"
@@ -139,6 +145,7 @@ const ContactForm = () => {
       >
         Submit
       </Button>
+      </section>
     </form>
   );
 };

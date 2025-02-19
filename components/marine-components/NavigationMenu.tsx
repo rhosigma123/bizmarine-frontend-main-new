@@ -1,7 +1,10 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { RiArrowDownSLine } from "react-icons/ri";
+import MegaMenu from "./Common/MegaMenu";
 
 const navItems = [
   {
@@ -33,28 +36,47 @@ const navItems = [
 const NavigationMenu = (props: any) => {
   const pathname = usePathname();
 
+  const [isMegaManuOpen, setMegaManuOpen] = useState(false);
+
   return (
-    <ul
-      className={`${props.className} md:flex justify-center mt-10 text-center md:mt-0 gap-5 md:gap-10 py-3 `}
-    >
-      {navItems.map((navItem, index) => {
-        const isActive = pathname === `/${navItem.navLink}`;
-        return (
-          <li key={index} onClick={props.handleSheetClose}>
-            <Link
-              className={`${
-                isActive
-                  ? "text-primary font-semibold border-b-2 border-primary"
-                  : "font-medium hover:text-primary hover:font-semibold"
-              }`}
-              href={`/${navItem.navLink}`}
+    <>
+      <section className="w-full relative h-auto flex  bg-primary">
+        <ul
+          className={`${props.className} biz__container    lg:flex justify-start items-center  mt-10 text-center md:mt-0   py-2`}
+        >
+          <MegaMenu>
+            <li
+              className="flex items-center  gap-3 w-fit relative h-auto "
+              onMouseEnter={() => setMegaManuOpen(!isMegaManuOpen)}
             >
-              {navItem.navItem}
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
+              <RxHamburgerMenu className="text-[20px] text-white cursor-pointer" />
+              <p className="text-base font-semibold text-white cursor-pointer">
+                Shop Categories
+              </p>
+              {/* <RiArrowDownSLine className="text-[20px] text-white cursor-pointer" /> */}
+            </li>
+          </MegaMenu>
+
+          {navItems.map((navItem, index) => {
+            const isActive = pathname === `/${navItem.navLink}`;
+            return (
+              <li key={index} onClick={props.handleSheetClose}>
+                <Link
+                  className={`  py-4 px-5 ${
+                    isActive
+                      ? "text-white bg-[#2A8484]  font-semibold border-b-2 border-primary"
+                      : "font-medium text-white "
+                  }`}
+                  href={`/${navItem.navLink}`}
+                >
+                  {navItem.navItem}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    </>
   );
 };
 

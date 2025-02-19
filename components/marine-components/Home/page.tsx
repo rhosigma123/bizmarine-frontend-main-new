@@ -16,9 +16,25 @@ import MarineShopbanner from "./MarineShopbanner";
 import CategorySection from "../Categories/CategorySection";
 import ProductFIlrterSection from "../Products/ProductFIlrterSection";
 import WarrentySection from "./WarrentySection";
+import ContentLoader from "react-content-loader";
 
 const Home = () => {
   const [data, setData] = useState<HomePageData | null>(null);
+  const [currentFilter1, setCurrentFilter1] = useState({
+    newarrival: true,
+    featured: false,
+    popular: false,
+  });
+  const [currentFilter2, setCurrentFilter2] = useState({
+    newarrival: true,
+    featured: false,
+    popular: false,
+  });
+  const [currentFilter3, setCurrentFilter3] = useState({
+    newarrival: true,
+    featured: false,
+    popular: false,
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,39 +49,77 @@ const Home = () => {
     fetchData();
   }, []);
 
+  const transformedCategories =
+    data?.category.map((category) => ({
+      ...category,
+      status: category.status === "true" ? true : false, // Convert string to boolean
+    })) || [];
+
   // if (!data) {
   //   return (
-  //     <h1 className="h-[calc(100vh-150px)] grid place-content-center">
-  //       <TbLoader2 className="text-primary animate-spin text-2xl" />
-  //     </h1>
+  //     <section className="w-full relative h-fit biz__container ">
+  //       <ContentLoader viewBox="0 0 500 300" height={"100%"} width={"100%"}>
+  //         <rect x="19" y="64" rx="0" ry="0" width="465" height="200" />
+  //         <rect x="18" y="225" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="182" y="225" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="343" y="225" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="18" y="270" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="182" y="270" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="343" y="270" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="18" y="225" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="182" y="225" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="343" y="225" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="18" y="270" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="182" y="270" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="343" y="270" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="18" y="225" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="182" y="225" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="343" y="225" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="18" y="270" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="182" y="270" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="343" y="270" rx="0" ry="0" width="141" height="38" />
+  //         <rect x="19" y="64" rx="0" ry="0" width="465" height="200" />
+  //       </ContentLoader>
+  //     </section>
   //   );
   // }
 
   return (
     <>
       <HomeContext.Provider value={data}>
-      <HeroSection />
+        <HeroSection />
+        <ViewProductSection />
+        <ProductFIlrterSection
+          currentfilter={currentFilter1}
+          setcurrentfilter={setCurrentFilter1}
+          title={"POPULAR PRODUCTS"}
+        />
+        <CategorySection
+          title={"Top Industrial and Marine Automation Categories"}
+        />
 
-      
-      <ViewProductSection />
-      <ProductFIlrterSection title={"POPULAR PRODUCTS"} cardcss={" h-[150px] md:h-[200px] "} />
-      <MarineShopbanner />
-      <CategorySection title={"Top Industrial and Marine Automation Categories"} />
-      <ProductFIlrterSection title={"Marine Automation Products"} cardcss={" h-[150px] md:h-[200px] "} />
-      <MarineShopbanner />
-      <CategorySection title={"Top Industrial and Marine Automation Categories"} />
+        <ProductFIlrterSection
+          currentfilter={currentFilter2}
+          setcurrentfilter={setCurrentFilter2}
+          title={"Marine Automation Products"}
+        />
+        <CategorySection
+          title={"Top Industrial and Marine Automation Categories"}
+        />
 
-      <ProductFIlrterSection title={"POPULAR PRODUCTS"}  />
-      <MarineShopbanner />
+        <ProductFIlrterSection
+          title={"POPULAR PRODUCTS"}
+          currentfilter={currentFilter3}
+          setcurrentfilter={setCurrentFilter3}
+        />
 
-      <WarrentySection/>
-      
+        <WarrentySection  title={""} />
 
-      <KeyPointsSection />
-      <CategorySliderContainer />
-      <ProductSliderContainer />
-      <ClientSliderContainer />
-    </HomeContext.Provider>
+        
+      {/* <CategorySliderContainer /> */}
+      {/* <ProductSliderContainer /> */}
+        <ClientSliderContainer />
+      </HomeContext.Provider>
     </>
   );
 };

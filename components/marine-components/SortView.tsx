@@ -29,38 +29,37 @@ const SortView: React.FC<SortViewProps> = ({
 }) => {
   return (
     <div className="flex items-center gap-5 justify-between bg-secondary/80 p-3 md:py-3 md:px-5 rounded-md">
-      <span className="hidden md:flex gap-2 items-center">
-        <BsFillGridFill
-          title="Grid View"
-          onClick={toggleGridHandler}
-          className={`cursor-pointer text-2xl ${
-            gridView ? "text-primary" : "text-secondary-foreground"
-          }`}
-        />
-        <FaList
-          title="List View"
-          onClick={toggleListHandler}
-          className={`cursor-pointer text-2xl ${
-            listView ? "text-primary" : "text-secondary-foreground"
-          }`}
-        />
+      <span className="hidden md:flex gap-2 items-center"></span>
+      <span className="w-fit  relative h-auto flex items-center gap-4">
+        <SmallScreenFilter />
+        <Select>
+          <SelectTrigger className="w-[130px] md:w-[180px] bg-white">
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel className="text-primary font-bold">
+                Fruits
+              </SelectLabel>
+              <SelectItem value="apple" className="text-secondary ">
+                Apple
+              </SelectItem>
+              <SelectItem value="banana" className="text-secondary ">
+                Banana
+              </SelectItem>
+              <SelectItem value="blueberry" className="text-secondary ">
+                Blueberry
+              </SelectItem>
+              <SelectItem value="grapes" className="text-secondary ">
+                Grapes
+              </SelectItem>
+              <SelectItem value="pineapple" className="text-secondary ">
+                Pineapple
+              </SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </span>
-      <SmallScreenFilter />
-      <Select>
-        <SelectTrigger className="w-[130px] md:w-[180px] bg-white">
-          <SelectValue placeholder="Select a fruit" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            <SelectLabel className="text-primary font-bold" >Fruits</SelectLabel>
-            <SelectItem value="apple" className="text-secondary ">Apple</SelectItem>
-            <SelectItem value="banana"  className="text-secondary ">Banana</SelectItem>
-            <SelectItem value="blueberry"  className="text-secondary ">Blueberry</SelectItem>
-            <SelectItem value="grapes"  className="text-secondary ">Grapes</SelectItem>
-            <SelectItem value="pineapple"  className="text-secondary ">Pineapple</SelectItem>
-          </SelectGroup>
-        </SelectContent>
-      </Select>
     </div>
   );
 };

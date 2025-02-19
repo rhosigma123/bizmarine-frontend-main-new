@@ -4,30 +4,29 @@ import { Metadata } from "next";
 
 import CommonBanner from "@/components/marine-components/Common/CommonBanner";
 import MarineBreadCrumb from "@/components/marine-components/MarineBreadCrumb";
-
-export const metadata: Metadata = {
-  title: "Categories Biz Marine",
-  description: "",
+import { mergeMetadata } from "../layout";
+export const metadata = mergeMetadata ( {
+  title: "Products Collections - Biz Marine | Premium Marine Parts",
+  description: "Browse Biz Marine’s extensive collection of premium marine parts. Find high-quality, durable components for all your marine needs.",
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
-    title: "Categories Biz Marine",
-    description: "",
-    url: "/collection",
+    title: "Products Collections - Biz Marine | Premium Marine Parts",
+    description: "Explore Biz Marine's wide range of marine parts and accessories. Discover high-quality solutions for boats, ships, and maritime equipment.",
+    url: "/products-collections",
     locale: "en_us",
-    siteName: "BizMarine",
+    siteName: "Biz Marine",
   },
   alternates: {
-    canonical: `/collection`,
+    canonical: `/products-collections`,
   },
-};
-
+});
 const Collections = () => {
   return (
     <>
-      <CommonBanner/>
+      <CommonBanner title={"Bizmarine Categories"} image={"/collectionbanner.jfif"}/>
       <MarineBreadCrumb />
       <CollectionsContainer />
     </>

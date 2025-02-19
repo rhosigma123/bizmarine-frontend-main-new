@@ -19,7 +19,7 @@ const ClientSliderContainer = () => {
   }, []);
 
   return (
-    <div className="py-10 bg-secondary-foreground">
+    <div className="py-10 bg-white">
       <ClientsSlider data={data} />
     </div>
   );

@@ -9,7 +9,7 @@ const Logo = (props: any) => {
   return (
     <Link href={"/"}>
       <Image
-        className="w-[210px] max-h-[50px] h-full"
+        className=" min-w-[200px] md:w-[210px] max-h-[50px] h-full object-contain"
         src={imageUrl}
         width={200}
         height={200}

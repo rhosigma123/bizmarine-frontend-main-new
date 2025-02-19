@@ -7,7 +7,10 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 
-export default function CategoryCollapsibel({ data, name }: any) {
+import { categoryreducer } from "../Products/AllProducts";
+
+
+export default function CategoryCollapsibel({ data, name ,  }: any) {
   const [isOpen, setIsOpen] = React.useState(true);
 
   return (
@@ -35,6 +38,7 @@ export default function CategoryCollapsibel({ data, name }: any) {
             <p
               key={item.id}
               className="text-foreground/70 cursor-pointer w-fit text-sm font-medium"
+              
             >
               {item.name}
             </p>

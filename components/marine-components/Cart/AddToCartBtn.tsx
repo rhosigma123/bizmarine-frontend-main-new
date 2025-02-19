@@ -5,11 +5,14 @@ import { BiCartDownload } from "react-icons/bi";
 import NumberOfProducts from "../NumberOfProducts";
 import { CartContext } from "@/app/Context/CartContext";
 import { CiHeart } from "react-icons/ci";
-
+import { useWishlist } from "@/app/Context/WishlistContext";
+import { IoHeartDislikeOutline } from "react-icons/io5";
 interface Product {
   id: number;
   name: string;
   image: string;
+  slug?:string,
+  price?:string 
 }
 
 interface AddToCartBtnProps {
@@ -21,6 +24,14 @@ const AddToCartBtn: React.FC<AddToCartBtnProps> = ({ className, product }) => {
   const [isInCart, setIsInCart] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const { cartItemCount, addToCart, removeFromCart } = useContext(CartContext); // use context here
+  const { addToWishlist, isInWishlist, allwishlist, removeFromWishlist } =
+    useWishlist();
+  const [wishlistdataExist, setWishlistdata] = useState(false);
+
+  useEffect(() => {
+    const exist = isInWishlist(product.id);
+    setWishlistdata(exist);
+  }, [allwishlist.length]);
 
   useEffect(() => {
     const existingCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
@@ -32,7 +43,7 @@ const AddToCartBtn: React.FC<AddToCartBtnProps> = ({ className, product }) => {
       setQuantity(existingProduct.quantity);
     } else {
       setIsInCart(false);
-      setQuantity(1); // Reset quantity if not in cart
+      setQuantity(1); 
     }
   }, [product.id]);
 
@@ -84,7 +95,7 @@ const AddToCartBtn: React.FC<AddToCartBtnProps> = ({ className, product }) => {
           product={product}
           initialQuantity={quantity}
           updateQuantity={setQuantity}
-          onRemove={handleRemoveFromCart} // Optional: if you have a remove button in NumberOfProducts
+          onRemove={handleRemoveFromCart}
         />
       ) : (
         // <Button
@@ -94,13 +105,35 @@ const AddToCartBtn: React.FC<AddToCartBtnProps> = ({ className, product }) => {
         //   <BiCartDownload className="text-xl hidden sm:block" />
         //   Add to Cart
         // </Button>
-        <span className="w-full relative gap-4 h-auto flex items-center justify-between ">
-          <Button  onClick={handleAddToCart}className="w-full relative py-1 px-3 rounded-full bg-primary text-white hover:text-primary hover:bg-white border border-primary flex items-senter justify-center cursor-pointer">
+        <span className="w-full relative gap-4 h-fit flex items-center justify-between ">
+          <Button
+            onClick={handleAddToCart}
+            className="w-full relative py-1 px-3 rounded-lg bg-primary text-white hover:text-primary hover:bg-white border border-primary flex items-senter justify-center cursor-pointer"
+          >
             Add to Cart
           </Button>
-          <span className="w-fit relative h-fit rounded-full bg-heartbg p-2">
-            <CiHeart className="text-[25px] text-black cursor-pointer " />
-          </span>
+          {wishlistdataExist && (
+            <span
+              className={`w-fit relative h-fit rounded-full bg-heartbg p-2    `}
+              onClick={() => removeFromWishlist(product.id)}
+            >
+              <IoHeartDislikeOutline
+                className={`text-[24px]  cursor-pointer text-red-600 `}
+              />
+            </span>
+          )}
+          {!wishlistdataExist && (
+            <span
+              className={`w-fit relative h-fit rounded-full bg-heartbg p-2    `}
+              onClick={() => addToWishlist(product)}
+            >
+              <CiHeart
+                className={`text-[25px]  cursor-pointer ${
+                  wishlistdataExist ? "text-red-700" : "text-black"
+                } `}
+              />
+            </span>
+          )}
         </span>
       )}
     </>

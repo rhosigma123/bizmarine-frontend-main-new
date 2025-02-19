@@ -37,17 +37,26 @@ const SingleCollectionProducts = () => {
   };
 
   return (
-    <section className="container gap-5 grid items-start md:grid-cols-[1fr_2fr] lg:grid-cols-[1fr_3fr] p-5 pb-10 md:py-10">
+    <section className="container gap-5 grid items-start grid-cols-1 lg:grid-cols-[1fr_3fr] p-5 pb-10 md:py-10">
       <AllFilters />
-      <div className="grid gap-5 content-start">
-        <h2 className="text-2xl font-medium capitalize">fsdfsdfsd</h2>
-        <p className="text-base sm:text-lg text-secondray-foreground leading-5"></p>
-        <SortView
-          toggleGridHandler={toggleGridHandler}
-          toggleListHandler={toggleListHandler}
-          listView={listCard}
-          gridView={gridCard}
-        />
+      <div className="grid gap-5 lx:gap-10 content-start">
+        <section className="w-full relative flex items-center justify-between">
+          <span className="flex flex-col items-start gap-1">
+            <h2 className=" text-2xl lg:text-3xl font-medium text-primary  capitalize">
+              Categories Products
+            </h2>
+            <p className="text-base sm:text-lg text-secondray leading-5">
+              Showing 1–9 of 35 results
+            </p>
+          </span>
+          <SortView
+            toggleGridHandler={toggleGridHandler}
+            toggleListHandler={toggleListHandler}
+            listView={listCard}
+            gridView={gridCard}
+          />
+        </section>
+
         <ProductsContainer
           listView={listCard}
           gridView={gridCard}

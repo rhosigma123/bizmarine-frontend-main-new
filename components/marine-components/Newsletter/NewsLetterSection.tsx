@@ -3,8 +3,8 @@ import NewsLetterInput from "./NewsLetterInput";
 
 const NewsLetterSection = () => {
   return (
-    <div className="bg-primary w-full p-5 md:p-10 ">
-      <div className="container flex justify-start md:justify-between px-0 items-center gap-5 flex-wrap">
+    <div className="bg-primary w-full p-5 md:p-10  ">
+      <div className="  flex justify-start md:justify-between px-0 items-center gap-5 flex-wrap">
         <div className="grid gap-2">
           <h2 className="text-2xl md:text-3xl text-white font-semibold">
             miss any updates from us,

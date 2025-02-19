@@ -324,3 +324,24 @@ figure img {
     ),
     lightgray 25% / cover no-repeat;
 }
+
+#style-3::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3) !important;
+	background-color: #F5F5F5 !important;
+}
+
+#style-3::-webkit-scrollbar
+{
+	width: 5px !important;
+	background-color: #F5F5F5 !important;
+}
+
+#style-3::-webkit-scrollbar-thumb
+{
+	background-color: #000000 !important;
+}
+
+.focus\:bg-accent:focus {
+  background-color: transparent !important;
+}

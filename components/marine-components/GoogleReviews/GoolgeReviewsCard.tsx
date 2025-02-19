@@ -11,9 +11,9 @@ const GoolgeReviewsCard: React.FC<TestimonialsCardProps> = ({ data }) => {
   console.log("testimonials ", data);
 
   return (
-    <div className="border relative content-start rounded-lg gap-3 grid bg-white p-5">
-      <div className="grid gap-x-3 grid-cols-[50px_auto]">
-        <Image
+    <div className="border relative content-start rounded-xl  flex flex-col gap-3 bg-white p-5">
+      {/* <div className="grid gap-x-3 grid-cols-[50px_auto]">
+        <Image  
           className="row-span-2 rounded-full h-[50px] w-[50px] object-cover"
           src={`${BASE_URL}${data.photo || ""}`}
           width={100}
@@ -45,6 +45,21 @@ const GoolgeReviewsCard: React.FC<TestimonialsCardProps> = ({ data }) => {
       </div>
       <p className="text-base text-secondary-foreground/60 line-clamp-4">
         {data.comment}
+      </p> */}
+
+      <h2 className=" text-lg md:text-lg font-medium text-primary ">Josh Whiskas</h2>
+
+      <div className="flex gap-0 items-center text-[#e3bd00] text-xl">
+        <AiFillStar />
+        <AiFillStar />
+        <AiFillStar />
+        <AiFillStar />
+        <AiOutlineStar />
+      </div>
+
+      <p className="text-base font-medium text-secondary line-clamp-3 ">
+        Crafting a sustainable future through advanced solutions in energy,
+        automation, & digital transformation.
       </p>
     </div>
   );

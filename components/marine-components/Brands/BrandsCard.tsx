@@ -12,10 +12,10 @@ const BrandsCard: React.FC<BrandsCardProps> = ({ data }) => {
   return (
     <Link
       href={`/brands/${data.slug}`}
-      className="grid gap-5 hover:shadow-md p-3 md:p-5 justify-items-center w-full hover:scale-105 transition-all ease-linear hover:border bg-white"
+      className="grid gap-5  p-3  justify-items-center w-full  transition-all ease-linear border bg-white"
     >
       <Image
-        className="w-full h-[150px] object-contain"
+        className="w-full h-[150px] object-cover rounded-xl"
         src={`${BASE_URL}${data.image || ""}`}
         width={250}
         height={250}

@@ -10,6 +10,7 @@ interface CartItem {
   image: string;
   quantity: number;
   description: string;
+  price?:string
 }
 
 const CartCard: React.FC<{
@@ -41,24 +42,22 @@ const CartCard: React.FC<{
   };
 
   return (
-    <div className="grid gap-5 grid-cols-1 w-full sm:grid-cols-[100px_2.2fr_1fr_1fr]  lg:grid-cols-[100px_2.2fr_1fr_1fr_1fr] border justify-items-center justify-between p-2 items-center rounded-xl">
+    <div className="grid gap-5 items-start grid-cols-1 w-full sm:grid-cols-[100px_2.2fr_1fr_1fr]  lg:grid-cols-[100px_2.2fr_1fr_1.2fr_1.2fr] border  justify-items-start md:justify-items-center justify-start  md:justify-between p-2 md:items-center rounded-xl">
       <Image
         src={`${BASE_URL}${item.image || ""}`}
         height={100}
         width={100}
         alt="Product Image"
-        className="w-[80px] h-[80px] object-cover border rounded-md"
+        className=" w-full  sm:w-[80px] h-[120px] sm:h-[80px] object-cover border rounded-md"
       />
       <Link
         href={`/products/${item.id}`}
         className="underline text-primary font-bold line-clamp-3 text-base"
       >
-        {/* {item.name} */}
-        Ayan mansoor
+        {item.name}
       </Link>
       <p className="  font-bold line-clamp-3 text-base text-primary">
-        {/* {item?.price} */}
-        price will come here
+        {item.price}
       </p>
       <span className="flex gap-2 text-sm items-center">
         <strong>QTY:</strong>
@@ -76,8 +75,7 @@ const CartCard: React.FC<{
       </span>
 
       <p className=" lg:flex  hidden   font-bold line-clamp-3 text-base text-primary">
-        {/* {item?.price} */}
-        total will come here
+        { (quantity * Number(item?.price)) || ""}
       </p>
       
     </div>

@@ -34,7 +34,7 @@ const GoogleReviewsSlider = () => {
       }}
       navigation={true}
       modules={[Autoplay, Navigation]}
-      className="mySwiper googleReviewSwiper px-0 lg:px-[30px]"
+      className="mySwiper googleReviewSwiper   px-0 lg:px-[30px]"
       style={swiperStyle}
       breakpoints={{
         320: {

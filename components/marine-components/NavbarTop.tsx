@@ -3,13 +3,13 @@ import React from "react";
 
 const navLinks = [
   { id: "1", link: "/account", name: "My Account" },
-  { id: "2", link: "/wishilst", name: "Wishlist" },
+  { id: "2", link: "/wishilsts", name: "Wishlists" },
   { id: "3", link: "/track-order", name: "Track Your Order" },
 ];
 
 const NavbarTop = () => {
   return (
-    <section className="hidden md:block bg-secondary border-b border-[#343434] py-2 ">
+    <section className="hidden lg:block bg-secondary border-b border-[#343434] py-2 ">
       <div className="container flex gap-5 flex-wrap justify-between">
         <ul className="flex items-center gap-5">
           {navLinks.map((item) => (

@@ -29,7 +29,7 @@ const MarineBreadCrumb = () => {
 
   return (
     <Breadcrumb className="bg-lightgray">
-      <BreadcrumbList className="container p-5 md:py-5 w-full ">
+      <BreadcrumbList className="biz__container p-5 md:py-5 w-full ">
         <BreadcrumbItem className="text-base lg:text-xl font-semibold">
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
@@ -42,7 +42,7 @@ const MarineBreadCrumb = () => {
                   {path.name}
                 </BreadcrumbLink>
               ) : (
-                <BreadcrumbPage className="capitalize">
+                <BreadcrumbPage className="capitalize  text-primary">
                   {path.name}
                 </BreadcrumbPage>
               )}
@@ -60,7 +60,7 @@ const MarineBreadCrumb = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start">
                   {paths.slice(1, -1).map((path, index) => (
-                    <DropdownMenuItem key={index} className="capitalize">
+                    <DropdownMenuItem key={index} className="capitalize ">
                       <BreadcrumbLink href={path.path}>
                         {path.name}
                       </BreadcrumbLink>

@@ -1,3 +1,5 @@
+import { Interface } from "readline";
+
 export interface Brands {
     id: number;
     name: string;
@@ -85,7 +87,45 @@ export interface Products {
     alt_tag: string;
     created_at: string;
     updated_at: string;
+    
 }
+export interface WishlistItem  {
+    id: number;
+    name: string;
+    slug: string;
+    sku: string;
+    description?: string;
+    content?: string;
+    image?: string;
+    alt_tag?: string;
+    price?: number | null;
+    quantity?: number;
+    order?: number;
+    created_at?: string; // ISO date string
+    updated_at?: string; // ISO date string
+    brand?: {
+      id: number;
+      name: string;
+      image: string;
+      alt_tag: string;
+      description: string;
+      created_at: string; // ISO date string
+      updated_at: string; // ISO date string
+    };
+    category?: {
+      id: number;
+      name: string;
+      image: string;
+      alt_tag: string;
+      description: string;
+      created_at: string; // ISO date string
+      updated_at: string; // ISO date string
+    };
+  };
+
+  export interface wishlistinterface {
+    data:WishlistItem
+  }
 
 export interface Careers {
     id: number;
@@ -173,11 +213,36 @@ export interface HomePageData {
     testimonials: Testimonials[];
 }
 
-export interface FilterSectionType{
-    title:string,
-    cardcss?:string,
-    
-}
+export interface FilterStateType {
+    newarrival: boolean;
+    featured: boolean;
+    popular: boolean;
+  }
+  
+  export interface Productinterfce {
+    id: number;
+    name: string;
+    price: number | null;
+    image: string | null;
+    alt_tag: string;
+    description: string;
+    content: string;
+    quantity: number;
+    sku: string;
+    slug: string;
+    created_at: string;
+    updated_at: string;
+    order: number;
+    category: number;
+    brand: number;
+  }
+  
+  export interface FilterSectionType {
+    title: string;
+    cardcss?: string;
+    currentfilter: FilterStateType;
+    setcurrentfilter: React.Dispatch<React.SetStateAction<FilterStateType>>;
+  }
 
 
 export interface ViewproductCard{

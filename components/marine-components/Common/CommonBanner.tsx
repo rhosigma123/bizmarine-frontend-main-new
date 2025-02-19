@@ -4,7 +4,7 @@ import React from "react";
 
 function CommonBanner({title,image ,css}:{title:string,image:string ,css?:string}) {
   return (
-    <section className={`w-full realtive h-[300px] sm:h-[400px] md:h-[500px] flex items-center justify-center   bg-center bg-cover bg-no-repeat `
+    <section className={`w-full realtive  flex items-center justify-center   bg-center bg-cover bg-no-repeat  ${css ? css: "h-[300px] sm:h-[400px] md:h-[500px]"} `
     }
     style={{ backgroundImage: `url(${image})` }}
     >
