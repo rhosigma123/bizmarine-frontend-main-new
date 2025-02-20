@@ -1,26 +1,29 @@
 import React from "react";
 import Image from "next/image";
-
+import { BASE_URL } from "@/config/config";
+import Link from "next/link";
 
 type MegaMenuCardtype={
     image:string,
     title:string,
+    description:string,
+    slug:string
 }
 
-function Megamenucard({image,title}:MegaMenuCardtype) {
+function Megamenucard({image,title, description ,slug}:MegaMenuCardtype) {
   return (
-    <section className=" w-[150px]   relative h-[200px]  flex flex-col gap-1 bg-lightgray p-4 rounded-md">
+    <Link href={`/categories/${slug}`} className=" w-[200px]   relative h-[200px]  flex flex-col gap-1 bg-lightgray p-4 rounded-md">
       <Image
-        src={image}
+        src={`${BASE_URL}${image || ""}`}
         alt={title}
         height={300}
         width={300}
-        className="   h-full w-full relative rounded-lg  cursor-pointer"
+        className="   h-[150px] w-full relative rounded-lg  cursor-pointer"
       />
-      <h2 className=" text-sm  font-medium text-secondary  text-center">
-        Croma Type A & Type C 4-Port Charger 
+      <h2 className=" text-base  font-medium text-primary  text-center">
+        {description}
       </h2>
-    </section>
+    </Link>
   );
 }
 

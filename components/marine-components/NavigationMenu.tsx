@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RiArrowDownSLine } from "react-icons/ri";
 import MegaMenu from "./Common/MegaMenu";
+import { RootContext } from "@/app/Context/RootContext";
 
 const navItems = [
   {
@@ -36,7 +37,7 @@ const navItems = [
 const NavigationMenu = (props: any) => {
   const pathname = usePathname();
 
-  const [isMegaManuOpen, setMegaManuOpen] = useState(false);
+  const data = useContext(RootContext);
 
   return (
     <>
@@ -44,16 +45,12 @@ const NavigationMenu = (props: any) => {
         <ul
           className={`${props.className} biz__container    lg:flex justify-start items-center  mt-10 text-center md:mt-0   py-2`}
         >
-          <MegaMenu>
-            <li
-              className="flex items-center  gap-3 w-fit relative h-auto "
-              onMouseEnter={() => setMegaManuOpen(!isMegaManuOpen)}
-            >
+          <MegaMenu data={data?.category}>
+            <li className="flex items-center  gap-3 w-fit relative h-auto ">
               <RxHamburgerMenu className="text-[20px] text-white cursor-pointer" />
               <p className="text-base font-semibold text-white cursor-pointer">
                 Shop Categories
               </p>
-              {/* <RiArrowDownSLine className="text-[20px] text-white cursor-pointer" /> */}
             </li>
           </MegaMenu>
 

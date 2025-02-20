@@ -10,13 +10,13 @@ import {
 } from "@/components/ui/sheet";
 import { Categories } from "@/types/interface";
 import AllFilters from "./Filters/AllFilters";
-import axios from "axios";
+import axios from "@/config/config";
 import CategoryCollapsibel from "./Filters/MajorCategoryFilter";
 import RangeSliderFilter from "./RangeFilter";
 
 const SmallScreenFilter = () => {
   const [brandsData, setBrandsData] = useState(null);
-  const [availabilityData, setAvailabilityData] = useState(null);
+  const [filterFrom, setFilterFrom] = useState({ from: 0, to: 100 })
   const [categoryData, setCategoryData] = useState<Categories[] | null>([]);
 
   useEffect(() => {
@@ -57,11 +57,10 @@ const SmallScreenFilter = () => {
             <div className="grid gap-3 w-full h-fit lg:sticky top-20 bg-background   self-start">
               <CategoryCollapsibel data={categoryData} name="Categories" />
               <CategoryCollapsibel
-                data={availabilityData}
                 name="Availability"
               />
               <CategoryCollapsibel data={brandsData} name="Brands" />
-              <RangeSliderFilter />
+              <RangeSliderFilter rangeState={filterFrom} setrange={setFilterFrom} />
             </div>
           </SheetDescription>
         </SheetHeader>

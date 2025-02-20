@@ -60,7 +60,7 @@ const ProductSlider = () => {
       {data?.products.map((products, index) => (
         <SwiperSlide key={index}>
           {/* <ProductGridCard data={products} /> */}
-          <NewProductGridCard data={products}/>
+          <NewProductGridCard data={products} wishlist={false}/>
         </SwiperSlide>
       ))}
     </Swiper>

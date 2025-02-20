@@ -3,11 +3,14 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { isEmail, isMobilePhone } from "validator";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { CartItem } from "@/types/interface";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import apiClient from "@/config/config";
 
 // * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++(Zod Validation Start)+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 const formSchema = z.object({
@@ -36,6 +39,7 @@ const formSchema = z.object({
     .max(50, "Email is too long")
     .refine(isEmail, { message: "Invalid Email Address" }),
   companyAddress: z.string().min(5, "Company Address is too short."),
+  products: z.array(z.number()).optional(),
 });
 
 type FormInputs = z.infer<typeof formSchema>;
@@ -48,23 +52,57 @@ const RequestQuote = () => {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors, isValid },
   } = useForm<FormInputs>({
     resolver: zodResolver(formSchema),
     mode: "onChange",
   });
+  const url = usePathname();
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleNext = () => {
     setCurrentStep((prevStep) => Math.min(prevStep + 1, 3));
   };
 
+  function getAllcartdata() {
+    const cartItemsStr = localStorage.getItem("cartItems");
+    const productsIds = [];
+    if (cartItemsStr) {
+      const storedCartItems: CartItem[] = JSON.parse(cartItemsStr);
+      if (Array.isArray(storedCartItems)) {
+        for (let item of storedCartItems) {
+          productsIds.push(item.id);
+        }
+        return productsIds;
+      }
+    }
+  }
+
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+
+    if (!executeRecaptcha) {
+      alert("ReCAPTCHA not loaded");
+      return;
+    }
+
     try {
+
+      const token = await executeRecaptcha();
+      const productIds = getAllcartdata();
+
+      data.products = productIds;
       console.log("Form Data Submitted:", data);
+      const response = await apiClient.post(`/order`, {
+        ...data,
+        token,
+        // url,
+      });
+      console.log(response.data, "yatsgksdfjgl");
       reset();
       setIsSubmitted(true);
       router.push("/thank-you");
-      handleDialogClose(); // Call the dialog close function after successful form submission
+      handleDialogClose();
     } catch (error) {
       console.error("Form submission failed", error);
     }
@@ -305,37 +343,70 @@ const RequestQuote = () => {
               <p className="text-xl font-bold text-primary">
                 Confirm Your Details
               </p>
-              <div className="flex flex-col gap-1">
-                <strong>Name:</strong>
-                <p>{/* Display entered name here */}</p>
+              <div className="flex items-center  gap-5">
+                <strong className="text-base font-semibold text-secondary">
+                  Name:
+                </strong>
+                <p className="text-primary font-semibold">
+                  {watch("name") || ""}
+                </p>
               </div>
-              <div className="flex flex-col gap-1">
-                <strong>Phone:</strong>
-                <p>{/* Display entered phone here */}</p>
+              <div className="flex items-center  gap-5">
+                <strong className="text-base font-semibold text-secondary">
+                  {" "}
+                  Phone:
+                </strong>
+                <p className="text-primary font-semibold">
+                  {watch("phone") || ""}
+                </p>
               </div>
-              <div className="flex flex-col gap-1">
-                <strong>Email:</strong>
-                <p>{/* Display entered email here */}</p>
+              <div className="flex items-center  gap-5">
+                <strong className="text-base font-semibold text-secondary">
+                  Email:
+                </strong>
+                <p className="text-primary font-semibold">
+                  {watch("email") || ""}
+                </p>
               </div>
-              <div className="flex flex-col gap-1">
-                <strong>Location:</strong>
-                <p>{/* Display entered location here */}</p>
+              <div className="flex items-center  gap-5">
+                <strong className="text-base font-semibold text-secondary">
+                  Location:
+                </strong>
+                <p className="text-primary font-semibold">
+                  {watch("location") || ""}
+                </p>
               </div>
-              <div className="flex flex-col gap-1">
-                <strong>Company Name:</strong>
-                <p>{/* Display entered company name here */}</p>
+              <div className="flex items-center  gap-5">
+                <strong className="text-base font-semibold text-secondary">
+                  Company Name:
+                </strong>
+                <p className="text-primary font-semibold">
+                  {watch("companyName") || ""}
+                </p>
               </div>
-              <div className="flex flex-col gap-1">
-                <strong>Company Phone:</strong>
-                <p>{/* Display entered company phone here */}</p>
+              <div className="flex items-center  gap-5">
+                <strong className="text-base font-semibold text-secondary">
+                  Company Phone:
+                </strong>
+                <p className="text-primary font-semibold">
+                  {watch("companyPhone")}
+                </p>
               </div>
-              <div className="flex flex-col gap-1">
-                <strong>Company Email:</strong>
-                <p>{/* Display entered company email here */}</p>
+              <div className="flex items-center  gap-5">
+                <strong className="text-base font-semibold text-secondary">
+                  Company Email:
+                </strong>
+                <p className="text-primary font-semibold">
+                  {watch("companyEmail") || ""}
+                </p>
               </div>
-              <div className="flex flex-col gap-1">
-                <strong>Company Address:</strong>
-                <p>{/* Display entered company address here */}</p>
+              <div className="flex items-center  gap-5">
+                <strong className="text-base font-semibold text-secondary">
+                  Company Address:
+                </strong>
+                <p className="text-primary font-semibold">
+                  {watch("companyAddress") || ""}
+                </p>
               </div>
               <div className="flex justify-between">
                 <Button

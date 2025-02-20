@@ -11,6 +11,7 @@ import NextTopLoader from "nextjs-toploader";
 import { RootProvider } from "./Context/RootContext";
 import { CartProvider } from "./Context/CartContext";
 import { WishlistProvider } from "./Context/WishlistContext";
+import Provider from "./Provider";
 
 const notoSans = Noto_Sans({
   subsets: ["latin"], // Add subsets as needed
@@ -63,24 +64,26 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={notoSans.className}>
-        <WishlistProvider>
-          <CartProvider>
-            <RootProvider>
-              {/* <NextTopLoader
+        <Provider>
+          <WishlistProvider>
+            <CartProvider>
+              <RootProvider>
+                {/* <NextTopLoader
               showSpinner={false}
               height={4}
               color="#2e9e9e"
               zIndex={1600}
             /> */}
-              <NavbarTop />
-              <Navbar />
-              <NavigationMenu className="hidden" />
-              {children}
-              <CallToAction />
-              <Footer />
-            </RootProvider>
-          </CartProvider>
-        </WishlistProvider>
+                <NavbarTop />
+                <Navbar />
+                <NavigationMenu className="hidden" />
+                {children}
+                <CallToAction />
+                <Footer />
+              </RootProvider>
+            </CartProvider>
+          </WishlistProvider>
+        </Provider>
       </body>
     </html>
   );

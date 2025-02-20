@@ -2,9 +2,8 @@ import Link from "next/link";
 import React from "react";
 
 const navLinks = [
-  { id: "1", link: "/account", name: "My Account" },
   { id: "2", link: "/wishilsts", name: "Wishlists" },
-  { id: "3", link: "/track-order", name: "Track Your Order" },
+  { id: "3", link: "", name: "Track Your Order" },
 ];
 
 const NavbarTop = () => {
@@ -23,9 +22,9 @@ const NavbarTop = () => {
             </li>
           ))}
         </ul>
-        <p className="text-sm text-[#f5f5f5] font-extralight uppercase">
-          Customer Service: +91 98765 43210
-        </p>
+        <span className="text-sm text-[#f5f5f5] font-extralight uppercase flex items-center gap-2">
+          Customer Service:<Link href={"tel:+91 98765 43210"} className=" text-white font-medium "> +91 98765 43210</Link>
+        </span>
       </div>
     </section>
   );

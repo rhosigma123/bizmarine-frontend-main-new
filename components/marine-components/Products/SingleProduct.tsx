@@ -133,7 +133,7 @@ const SingleProduct = () => {
             </div>
           </section>
           <div className="grid gap-5 content-start">
-            <ProductRigth productDetailtype={data}  />
+            <ProductRigth   productDetailtype={data} />
           </div>
         </div>
         <div className=" grid gap-5 rounded-xl ">

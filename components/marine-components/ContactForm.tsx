@@ -33,6 +33,7 @@ const ContactForm = () => {
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     try {
+      
       console.log("Form Data Submitted:", data);
       reset();
       router.push("/thank-you");

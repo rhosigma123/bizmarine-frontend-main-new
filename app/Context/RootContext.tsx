@@ -12,9 +12,9 @@ export const RootProvider = ({ children }: { children: ReactNode }) => {
     const fetchData = async () => {
       try {
         const response = await apiClient.get("/main-info");
-        console.log(response);
         
-        setData(response.data.data);
+        setData(response.data.data);  
+        console.log(response.data)
       } catch (errors) {
         console.log(errors);
       }

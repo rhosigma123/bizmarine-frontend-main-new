@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 function MarineShopbanner() {
   return (
-    <section className="w-full relative h-auto  ">
+    <section className="w-full relative h-auto biz__container  ">
       <section className="w-full relative h-auto flex items-center  rounded-xl   bg-no-repeat bg-cover object-right justify-center bg-[url(/vewproduct-image3.png)]">
         <div className="w-full relative min-h-[250px] lg:min-h-[300px] px-10 grid rounded-xl grid-cols-1 sm:grid-cols-[2fr_auto] md:grid-cols-2 bg-gradient-to-r from-black from-50%  to-transparent items-center justify-between ">
           <span className="flex flex-col  items-start justify-start gap-2">

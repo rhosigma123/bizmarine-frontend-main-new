@@ -55,34 +55,34 @@ const Home = () => {
       status: category.status === "true" ? true : false, // Convert string to boolean
     })) || [];
 
-  // if (!data) {
-  //   return (
-  //     <section className="w-full relative h-fit biz__container ">
-  //       <ContentLoader viewBox="0 0 500 300" height={"100%"} width={"100%"}>
-  //         <rect x="19" y="64" rx="0" ry="0" width="465" height="200" />
-  //         <rect x="18" y="225" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="182" y="225" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="343" y="225" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="18" y="270" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="182" y="270" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="343" y="270" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="18" y="225" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="182" y="225" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="343" y="225" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="18" y="270" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="182" y="270" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="343" y="270" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="18" y="225" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="182" y="225" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="343" y="225" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="18" y="270" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="182" y="270" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="343" y="270" rx="0" ry="0" width="141" height="38" />
-  //         <rect x="19" y="64" rx="0" ry="0" width="465" height="200" />
-  //       </ContentLoader>
-  //     </section>
-  //   );
-  // }
+  if (!data) {
+    return (
+      <section className="w-full relative pb-20 h-fit biz__container ">
+        <ContentLoader viewBox="0 0 500 300" height={"100%"} width={"100%"}>
+          <rect x="19" y="64" rx="0" ry="0" width="465" height="200" />
+          <rect x="18" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="182" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="343" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="18" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="182" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="343" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="18" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="182" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="343" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="18" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="182" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="343" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="18" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="182" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="343" y="225" rx="0" ry="0" width="141" height="38" />
+          <rect x="18" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="182" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="343" y="270" rx="0" ry="0" width="141" height="38" />
+          <rect x="19" y="64" rx="0" ry="0" width="465" height="200" />
+        </ContentLoader>
+      </section>
+    );
+  }
 
   return (
     <>

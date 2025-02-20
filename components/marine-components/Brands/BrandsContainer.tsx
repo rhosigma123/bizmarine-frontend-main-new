@@ -76,7 +76,7 @@ const BrandsContainer = () => {
 
   return (
     <>
-      <div className="container grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 p-5 pb-10 md:py-10">
+      <div className="biz__container grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-5 p-5 pb-10 md:py-10">
         {data.map((brand: any) => (
           <BrandsCard key={brand.id} data={brand} />
         ))}

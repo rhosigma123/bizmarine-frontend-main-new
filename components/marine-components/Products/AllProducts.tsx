@@ -11,37 +11,42 @@ import ContentLoader from "react-content-loader";
 import CategoryCollapsibel from "../Filters/MajorCategoryFilter";
 import RangeSliderFilter from "../RangeFilter";
 import useProductData from "@/components/CustomHooks/ProductHook";
-import useFetchData from "@/components/CustomHooks/BrandOrCategories";
-
-export const categoryreducer = (
-  state: { name: string },
-  action: { type: string; name?: string }
-) => {
-  switch (action.type) {
-    case "changed_name":
-      return { ...state, name: action.name || "" };
-    default:
-      return state;
-  }
-};
 
 const PAGE_SIZE = 20;
 
 const AllProducts = () => {
   const [filterFrom, setFilterFrom] = useState({ from: 0, to: 100 });
   const [currentPage, setCurrentPage] = useState(1);
-  const [listCard, setListCard] = useState(false);
-  const [gridCard, setGridCard] = useState(true);
-  // const [state, dispatch] = React.useReducer(categoryreducer, { name: "" });
+  const [Allbrands, setBrands] = useState();
+  const [AllFilterdProducts, setAllFilterProducts] = useState<Products[]>([]);
 
-  // const {
-  //   data: brandData,
-  //   loading,
-  //   error,
-  // } = useFetchData<{ brands: string[] }>(`brands/${state.name}`);
-  // // Using the custom hook
+  const dropdownreducer = (
+    state: { name: string },
+    action: { type: string; payload?: { name?: string } }
+  ) => {
+    switch (action.type) {
+      case "change_brand":
+        return { ...state, name: action.payload?.name || "" };
+      default:
+        return state;
+    }
+  };
 
-  const { filteredData, totalPages } = useProductData(currentPage, filterFrom);
+  const [state, dispatch] = React.useReducer(dropdownreducer, { name: "all" });
+
+  const { filteredData, totalPages, data } = useProductData(
+    currentPage,
+    filterFrom
+  );
+
+  useEffect(() => {
+    const brandFilterData =
+      state.name === "all"
+        ? data
+        : filteredData.filter((item:any) => item.brand?.name === state.name);
+
+    setAllFilterProducts(brandFilterData);
+  }, [state, data]);
 
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -49,20 +54,10 @@ const AllProducts = () => {
     }
   };
 
-  const toggleListHandler = () => {
-    setListCard(true);
-    setGridCard(false);
-  };
-
-  const toggleGridHandler = () => {
-    setListCard(false);
-    setGridCard(true);
-  };
-
   return (
     <section className="biz__container gap-5 grid lg:grid-cols-[1fr_3fr] p-5 md:py-10">
       <div className="hidden lg:grid gap-3 h-fit lg:sticky top-20 bg-background border rounded-md p-5 self-start">
-        <AllFilters />
+        <AllFilters setBrandState={setBrands} />
         <RangeSliderFilter rangeState={filterFrom} setrange={setFilterFrom} />
       </div>
 
@@ -78,14 +73,13 @@ const AllProducts = () => {
           </span>
 
           <SortView
-            toggleGridHandler={toggleGridHandler}
-            toggleListHandler={toggleListHandler}
-            listView={listCard}
-            gridView={gridCard}
+            toggleListHandler={dispatch}
+            data={data}
+            brandData={Allbrands}
           />
         </div>
 
-        {filteredData.length <= 0 ? (
+        {AllFilterdProducts.length <= 0 ? (
           <ContentLoader viewBox="0 0 90% 900" height={700} width={"100%"}>
             <rect x="30" y="20" rx="8" ry="8" width="200" height="200" />
             <rect x="30" y="250" rx="0" ry="0" width="200" height="18" />
@@ -125,11 +119,7 @@ const AllProducts = () => {
             <rect x="1130" y="595" rx="0" ry="0" width="120" height="20" />
           </ContentLoader>
         ) : (
-          <ProductsContainer
-            gridView={gridCard}
-            listView={listCard}
-            data={filteredData} // Pass the filtered data here
-          />
+          <ProductsContainer gridView={true} data={AllFilterdProducts} />
         )}
 
         {/* Pagination */}

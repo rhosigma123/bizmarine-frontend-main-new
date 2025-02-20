@@ -11,54 +11,7 @@ import { CartContext } from "@/app/Context/CartContext";
 
 import { BsCart3 } from "react-icons/bs";
 
-export interface Category {
-  id: number;
-  name: string;
-  image: string | null;
-  alt_tag: string;
-  description: string;
-  slug: string;
-  created_at: string;
-  updated_at: string;
-  status: boolean;
-  order: number;
-}
-
-export interface Brand {
-  id: number;
-  name: string;
-  image: string | null;
-  alt_tag: string;
-  description: string;
-  slug: string | null;
-  created_at: string;
-  updated_at: string;
-  order: number;
-}
-export interface productDetailInterfce {
-  id: number;
-  name: string;
-  slug: string;
-  order: number;
-  description: string;
-  quantity: number;
-  content: string;
-  brand: Brand; // Updated to use the Brand interface
-  price: number;
-  category: Category; // Updated to use the Category interface
-  sku: string;
-  image: string;
-  alt_tag: string;
-  created_at: string;
-  updated_at: string;
-  whishlist?: any;
-}
-
-export interface SingleProductResponse {
-  productDetailtype: productDetailInterfce;
-}
-
-function ProductRigth({ productDetailtype }: SingleProductResponse) {
+function ProductRigth({ productDetailtype }: any) {
   const { cartItemCount, addToCart, removeFromCart } = useContext(CartContext);
   const [isInCart, setIsInCart] = useState(false);
   const [quantity, setQuantity] = useState(1);
@@ -73,7 +26,7 @@ function ProductRigth({ productDetailtype }: SingleProductResponse) {
   useEffect(() => {
     const existingCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
     const existingProduct = existingCart.find(
-      (item: productDetailInterfce) => item.id === productDetailtype.id
+      (item: any) => item.id === productDetailtype.id
     );
     if (existingProduct) {
       setIsInCart(true);
@@ -87,7 +40,7 @@ function ProductRigth({ productDetailtype }: SingleProductResponse) {
   const handleAddToCart = () => {
     const existingCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
     const existingProductIndex = existingCart.findIndex(
-      (item: productDetailInterfce) => item.id === productDetailtype.id
+      (item: any) => item.id === productDetailtype.id
     );
 
     if (existingProductIndex !== -1) {
@@ -113,7 +66,7 @@ function ProductRigth({ productDetailtype }: SingleProductResponse) {
   const handleRemoveFromCart = () => {
     const existingCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
     const updatedCart = existingCart.filter(
-      (item: productDetailInterfce) => item.id !== productDetailtype.id
+      (item: any) => item.id !== productDetailtype.id
     );
 
     // Update local storage

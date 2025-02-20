@@ -51,7 +51,7 @@ const AddToCartBtn: React.FC<AddToCartBtnProps> = ({ className, product }) => {
   const handleAddToCart = () => {
     const existingCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
     const existingProductIndex = existingCart.findIndex(
-      (item: Product) => item.id === product.id
+      (item: Products) => item.id === product.id
     );
 
     if (existingProductIndex !== -1) {
@@ -78,7 +78,7 @@ const AddToCartBtn: React.FC<AddToCartBtnProps> = ({ className, product }) => {
   const handleRemoveFromCart = () => {
     const existingCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
     const updatedCart = existingCart.filter(
-      (item: Product) => item.id !== product.id
+      (item: Products) => item.id !== product.id
     );
 
     // Update local storage

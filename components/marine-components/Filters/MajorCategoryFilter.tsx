@@ -7,8 +7,6 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 
-import { categoryreducer } from "../Products/AllProducts";
-
 
 export default function CategoryCollapsibel({ data, name ,  }: any) {
   const [isOpen, setIsOpen] = React.useState(true);

@@ -4,25 +4,19 @@ import RequestQuote from "../RequestQuote";
 import CartCard from "./CartCard";
 import Link from "next/link";
 import { CartContext } from "@/app/Context/CartContext";
-import { BsThreeDots } from "react-icons/bs";
-import ProductGridCard from "../Products/ProductGridCard";
+import useProductData from "@/components/CustomHooks/ProductHook";
 import ContentLoader from "react-content-loader";
+import ProductGridCard from "../Products/ProductGridCard";
 
-interface CartItem {
-  name: string;
-  image: string;
-  quantity: number;
-  id: number;
-  price: string;
-  description: string;
-}
+import { CartItem } from "@/types/interface";
 
 const CartContainer = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const { cartItemCount, removeFromCart } = useContext(CartContext);
   const [loading, setLoading] = useState<boolean>(true); // Add a loading flag
 
-  // Fetch items from localStorage and update state
+  const { loading: productloading, data } = useProductData();
+
   const fetchCartItems = () => {
     try {
       const cartItemsStr = localStorage.getItem("cartItems");
@@ -78,51 +72,53 @@ const CartContainer = () => {
   };
 
   if (loading) {
-    return <section className="w-full relative h-auto biz__container">
-    <ContentLoader viewBox="0 0 1360 900" height={"100%"} width={"100%"} >
-    <rect x="30" y="20" rx="8" ry="8" width="200" height="200" />
-    <rect x="30" y="250" rx="0" ry="0" width="200" height="18" />
-    <rect x="30" y="275" rx="0" ry="0" width="120" height="20" />
-    <rect x="250" y="20" rx="8" ry="8" width="200" height="200" />
-    <rect x="250" y="250" rx="0" ry="0" width="200" height="18" />
-    <rect x="250" y="275" rx="0" ry="0" width="120" height="20" />
-    <rect x="470" y="20" rx="8" ry="8" width="200" height="200" />
-    <rect x="470" y="250" rx="0" ry="0" width="200" height="18" />
-    <rect x="470" y="275" rx="0" ry="0" width="120" height="20" />
-    <rect x="690" y="20" rx="8" ry="8" width="200" height="200" />
-    <rect x="690" y="250" rx="0" ry="0" width="200" height="18" />
-    <rect x="690" y="275" rx="0" ry="0" width="120" height="20" />
-    <rect x="910" y="20" rx="8" ry="8" width="200" height="200" />
-    <rect x="910" y="250" rx="0" ry="0" width="200" height="18" />
-    <rect x="910" y="275" rx="0" ry="0" width="120" height="20" />
-    <rect x="1130" y="20" rx="8" ry="8" width="200" height="200" />
-    <rect x="1130" y="250" rx="0" ry="0" width="200" height="18" />
-    <rect x="1130" y="275" rx="0" ry="0" width="120" height="20" />
-    <rect x="30" y="340" rx="8" ry="8" width="200" height="200" />
-    <rect x="30" y="570" rx="0" ry="0" width="200" height="18" />
-    <rect x="30" y="595" rx="0" ry="0" width="120" height="20" />
-    <rect x="250" y="340" rx="8" ry="8" width="200" height="200" />
-    <rect x="250" y="570" rx="0" ry="0" width="200" height="18" />
-    <rect x="250" y="595" rx="0" ry="0" width="120" height="20" />
-    <rect x="470" y="340" rx="8" ry="8" width="200" height="200" />
-    <rect x="470" y="570" rx="0" ry="0" width="200" height="18" />
-    <rect x="470" y="595" rx="0" ry="0" width="120" height="20" />
-    <rect x="690" y="340" rx="8" ry="8" width="200" height="200" />
-    <rect x="690" y="570" rx="0" ry="0" width="200" height="18" />
-    <rect x="690" y="595" rx="0" ry="0" width="120" height="20" />
-    <rect x="910" y="340" rx="8" ry="8" width="200" height="200" />
-    <rect x="910" y="570" rx="0" ry="0" width="200" height="18" />
-    <rect x="910" y="595" rx="0" ry="0" width="120" height="20" />
-    <rect x="1130" y="340" rx="8" ry="8" width="200" height="200" />
-    <rect x="1130" y="570" rx="0" ry="0" width="200" height="18" />
-    <rect x="1130" y="595" rx="0" ry="0" width="120" height="20" />
-  </ContentLoader>
-  </section>
+    return (
+      <section className="w-full relative h-auto biz__container">
+        <ContentLoader viewBox="0 0 1360 900" height={"100%"} width={"100%"}>
+          <rect x="30" y="20" rx="8" ry="8" width="200" height="200" />
+          <rect x="30" y="250" rx="0" ry="0" width="200" height="18" />
+          <rect x="30" y="275" rx="0" ry="0" width="120" height="20" />
+          <rect x="250" y="20" rx="8" ry="8" width="200" height="200" />
+          <rect x="250" y="250" rx="0" ry="0" width="200" height="18" />
+          <rect x="250" y="275" rx="0" ry="0" width="120" height="20" />
+          <rect x="470" y="20" rx="8" ry="8" width="200" height="200" />
+          <rect x="470" y="250" rx="0" ry="0" width="200" height="18" />
+          <rect x="470" y="275" rx="0" ry="0" width="120" height="20" />
+          <rect x="690" y="20" rx="8" ry="8" width="200" height="200" />
+          <rect x="690" y="250" rx="0" ry="0" width="200" height="18" />
+          <rect x="690" y="275" rx="0" ry="0" width="120" height="20" />
+          <rect x="910" y="20" rx="8" ry="8" width="200" height="200" />
+          <rect x="910" y="250" rx="0" ry="0" width="200" height="18" />
+          <rect x="910" y="275" rx="0" ry="0" width="120" height="20" />
+          <rect x="1130" y="20" rx="8" ry="8" width="200" height="200" />
+          <rect x="1130" y="250" rx="0" ry="0" width="200" height="18" />
+          <rect x="1130" y="275" rx="0" ry="0" width="120" height="20" />
+          <rect x="30" y="340" rx="8" ry="8" width="200" height="200" />
+          <rect x="30" y="570" rx="0" ry="0" width="200" height="18" />
+          <rect x="30" y="595" rx="0" ry="0" width="120" height="20" />
+          <rect x="250" y="340" rx="8" ry="8" width="200" height="200" />
+          <rect x="250" y="570" rx="0" ry="0" width="200" height="18" />
+          <rect x="250" y="595" rx="0" ry="0" width="120" height="20" />
+          <rect x="470" y="340" rx="8" ry="8" width="200" height="200" />
+          <rect x="470" y="570" rx="0" ry="0" width="200" height="18" />
+          <rect x="470" y="595" rx="0" ry="0" width="120" height="20" />
+          <rect x="690" y="340" rx="8" ry="8" width="200" height="200" />
+          <rect x="690" y="570" rx="0" ry="0" width="200" height="18" />
+          <rect x="690" y="595" rx="0" ry="0" width="120" height="20" />
+          <rect x="910" y="340" rx="8" ry="8" width="200" height="200" />
+          <rect x="910" y="570" rx="0" ry="0" width="200" height="18" />
+          <rect x="910" y="595" rx="0" ry="0" width="120" height="20" />
+          <rect x="1130" y="340" rx="8" ry="8" width="200" height="200" />
+          <rect x="1130" y="570" rx="0" ry="0" width="200" height="18" />
+          <rect x="1130" y="595" rx="0" ry="0" width="120" height="20" />
+        </ContentLoader>
+      </section>
+    );
   }
 
   return (
     <>
-      <div className="container grid gap-3 pb-8">
+      <div className="biz__container grid gap-3 pb-8">
         <h2 className="py-5 text-2xl font-medium">My Cart</h2>
 
         <ul className="w-full relative h-auto hidden sm:grid grid-cols-[3fr_1fr_1fr] md:grid-cols-[3.1fr_1fr_1fr_1fr] py-5 mb-2 border-b  justify-between items-center gap-1">
@@ -142,12 +138,11 @@ const CartContainer = () => {
 
         {cartItems.length > 0 ? (
           <>
-            <section className="w-full relative h-auto grid grid-cols-2 sm:grid-cols-1">
+            <section className="w-full relative h-auto gap-4 md:gap-2 grid grid-cols-2 sm:grid-cols-1">
               {cartItems.map((item) => (
                 <CartCard onDelete={handleDelete} key={item.id} item={item} />
               ))}
             </section>
-            {/* total section */}
 
             <section className="w-full relative h-auto flex-col gap-3 border-b px-5  mt-10 ">
               <div className="w-full relative h-auto border-b py-1 flex items-center justify-between gap-5 ">
@@ -170,7 +165,7 @@ const CartContainer = () => {
                     className="text-2xl  font-semibold text-primary cursor-pointer p-2  "
                     href={"/products"}
                   >
-                    $ {calculateTotalPrice()||0}
+                    $ {calculateTotalPrice() || 0}
                   </Link>
                 </div>
               </div>
@@ -178,36 +173,54 @@ const CartContainer = () => {
           </>
         ) : (
           <>
-            {/* <p className="text-center">Your cart is empty.</p>
-            <Link
-              className="text-primary text-xl text-center underline font-bold py-5"
-              href={"/products"}
-            >
-              Hurry..! Add Products
-            </Link> */}
-
             <section className="w-full relative h-auto gap-5 flex items-center flex-col ">
-              <h1 className="text-6xl font-medium text-primary text-center">Your cart is empty !</h1>
-              <Link href={"/products"} className=" text-foreground cursor-pointer  text-medium text-lg bg-primary text-white rounded-lg px-10 py-2 font-medium ">Shop Now</Link>
+              <h1 className="text-6xl font-medium text-primary text-center">
+                Your cart is empty !
+              </h1>
+              <Link
+                href={"/products"}
+                className=" text-foreground cursor-pointer  text-medium text-lg bg-primary text-white rounded-lg px-10 py-2 font-medium "
+              >
+                Shop Now
+              </Link>
             </section>
           </>
         )}
-        {cartItems.length  > 0 && <RequestQuote />}
+        {cartItems.length > 0 && <RequestQuote />}
       </div>
 
-      <section className="w-full biz__container relative h-auto flex flex-col items-start gap-10 md:gap-20 py-10 md:py-20">
-        <span className="w-full relative h-auto border-b py-3 flex items-center justify-between ">
-          <h2 className="text-3xl font-medium text-primary uppercase flex items-center gap-4 ">
-            YOU may also like
-          </h2>
-        </span>
+      {data.length <= 0 ? (
+        
+        <ContentLoader viewBox="0 0 1360 900" height={"100%"} width={"100%"}>
+          <rect x="30" y="20" rx="8" ry="8" width="200" height="200" />
+          <rect x="30" y="250" rx="0" ry="0" width="200" height="18" />
+          <rect x="30" y="275" rx="0" ry="0" width="120" height="20" />
+          <rect x="250" y="20" rx="8" ry="8" width="200" height="200" />
+          <rect x="250" y="250" rx="0" ry="0" width="200" height="18" />
+          <rect x="250" y="275" rx="0" ry="0" width="120" height="20" />
+          <rect x="470" y="20" rx="8" ry="8" width="200" height="200" />
+          <rect x="470" y="250" rx="0" ry="0" width="200" height="18" />
+          <rect x="470" y="275" rx="0" ry="0" width="120" height="20" />
+          <rect x="690" y="20" rx="8" ry="8" width="200" height="200" />
+          <rect x="690" y="250" rx="0" ry="0" width="200" height="18" />
+        </ContentLoader>
+      ) : (
+        <>
+          <section className="w-full biz__container relative h-auto flex flex-col items-start gap-5 md:gap-10 py-10 md:py-20">
+            <span className="w-full relative h-auto border-b py-3 flex items-center justify-between ">
+              <h2 className="text-3xl font-medium text-primary uppercase flex items-center gap-4 ">
+                YOU may also like
+              </h2>
+            </span>
 
-        <section className="w-full relative h-auto grid  grid-cols-2 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 gap-5 ">
-          {/* <ProductGridCard data={[]} />
-          <ProductGridCard data={[]} />
-          <ProductGridCard data={[]} /> */}
-        </section>
-      </section>
+            <section className="w-full relative h-auto grid  grid-cols-2 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 gap-5 ">
+              {data.map((item, index) => (
+                <ProductGridCard data={item} key={index} wishlist={false} />
+              ))}
+            </section>
+          </section>
+        </>
+      )}
     </>
   );
 };

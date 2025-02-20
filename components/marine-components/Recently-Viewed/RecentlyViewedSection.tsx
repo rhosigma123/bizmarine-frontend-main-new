@@ -7,12 +7,12 @@ const RecentlyViewedSection = () => {
       <h2 className="container col-span-6 text-3xl text-secondary-foreground font-medium">
         Recently Viewed
       </h2>
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+      {/* <ProductCard data={undefined} wishlist={false} />
+      <ProductCard data={undefined} wishlist={false} />
+      <ProductCard data={undefined} wishlist={false} />
+      <ProductCard data={undefined} wishlist={false} />
+      <ProductCard data={undefined} wishlist={false} />
+      <ProductCard data={undefined} wishlist={false} /> */}
     </div>
   );
 };

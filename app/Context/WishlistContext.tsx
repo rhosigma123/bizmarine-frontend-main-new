@@ -15,6 +15,7 @@ interface WishlistContextType {
   addToWishlist: (item: WishlistItem) => void;
   removeFromWishlist: (id: number) => void;
   isInWishlist: (id: number) => boolean;
+  clearWishlist: () => void; 
 }
 
 // Create the context with the correct type, initially undefined
@@ -58,6 +59,11 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const clearWishlist = () => {
+    setWishlist([]); // Clear the state
+    localStorage.removeItem("wishlist"); // Remove wishlist from local storage
+  };
+
   // Function to check if an item is in the wishlist
   const isInWishlist = (id: number) => {
     return allwishlist.some((item) => item.id === id);
@@ -72,7 +78,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <WishlistContext.Provider value={{ allwishlist, addToWishlist, removeFromWishlist, isInWishlist }}>
+    <WishlistContext.Provider value={{ allwishlist, clearWishlist, addToWishlist, removeFromWishlist, isInWishlist }}>
       {children}
     </WishlistContext.Provider>
   );

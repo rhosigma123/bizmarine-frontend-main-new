@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useReducer } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import ProductGridCard from "@/components/marine-components/Products/ProductGridCard";
 import MarineShopbanner from "../Home/MarineShopbanner";
@@ -7,11 +7,32 @@ import { useWishlist } from "@/app/Context/WishlistContext";
 import Link from "next/link";
 // import WhishlistCard from "../wishlist/WishlistCard";
 import WishlistCard from "../wishlist/WishlistCard";
+import Commondropdown from "./Commondropdown";
+
+interface WishlistState {
+  name: string;
+}
+
+// Define the action type
+interface WishlistAction {
+  type: string;
+  payload?: { name?: string };
+}
+
+const initialState: WishlistState = { name: "" };
 
 function WishlistSection() {
-  const { allwishlist, removeFromWishlist } = useWishlist();
-
-  console.log(allwishlist,"odklfhkldhfksfklh")
+  const { allwishlist, removeFromWishlist, clearWishlist } = useWishlist();
+  function wishlistReducer(state: WishlistState, action: WishlistAction) {
+    switch (action.type) {
+      case "delete_all":
+        clearWishlist();
+        return { name: "" };
+      default:
+        return state;
+    }
+  }
+  const [state, dispatch] = useReducer(wishlistReducer, initialState);
 
   return (
     <>
@@ -34,17 +55,22 @@ function WishlistSection() {
             <h2 className="text-3xl font-medium text-primary uppercase flex items-center gap-4 ">
               MY Whishlist
               <p className="text-base font-medium text-secondary ">
-                10 Products
+                {allwishlist.length} Products
               </p>
             </h2>
-
-            <BsThreeDots className="text-[20px] text-primary cursor-pointer" />
+            <Commondropdown
+              dispatchmethod={dispatch}
+              actions={["Delete All"]}
+              title="wishlists Products"
+            >
+              <BsThreeDots className="text-[20px] text-primary cursor-pointer" />
+            </Commondropdown>
           </span>
 
           <section className="w-full relative h-fit grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 ">
-            {/* {allwishlist.map((item, index) => (
+            {allwishlist.map((item, index) => (
               <WishlistCard data={item} key={index} />
-            ))} */}
+            ))}
           </section>
 
           <MarineShopbanner />

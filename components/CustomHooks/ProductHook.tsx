@@ -4,7 +4,7 @@ import axios from "@/config/config";
 
 const PAGE_SIZE = 20;
 
-const useProductData = (currentPage: number, filterFrom: { from: number; to: number }) => {
+const useProductData = (currentPage?: number, filterFrom?: { from: number; to: number }) => {
   const [data, setData] = useState<Products[]>([]);
   const [filteredData, setFilteredData] = useState<Products[]>([]);
   const [totalPages, setTotalPages] = useState(0);
@@ -35,13 +35,17 @@ const useProductData = (currentPage: number, filterFrom: { from: number; to: num
 
   // Filter products based on range
   useEffect(() => {
+    if(filterFrom?.from && filterFrom?.to){
     const filtered = data.filter(
-      (product) => product.price >= filterFrom.from && product.price <= filterFrom.to
+      (product) => product.price >= filterFrom?.from && product.price <= filterFrom?.to
     );
     setFilteredData(filtered);
+  }
+    
+
   }, [data, filterFrom]);
 
-  return { filteredData, totalPages, loading, error };
+  return { filteredData, totalPages, loading, error , data };
 };
 
 export default useProductData;

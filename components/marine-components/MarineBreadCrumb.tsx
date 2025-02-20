@@ -31,7 +31,7 @@ const MarineBreadCrumb = () => {
     <Breadcrumb className="bg-lightgray">
       <BreadcrumbList className="biz__container p-5 md:py-5 w-full ">
         <BreadcrumbItem className="text-base lg:text-xl font-semibold">
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          <BreadcrumbLink href="/" className="text-lg font-semibold  text-secondary">Home</BreadcrumbLink>
         </BreadcrumbItem>
         {paths.map((path, index) => (
           <React.Fragment key={index}>

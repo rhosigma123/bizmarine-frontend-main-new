@@ -211,26 +211,26 @@ const Footer = () => {
               <Link href={""} className="text-base font-medium text-white">
                 Feedback
               </Link>
-              <Link href={""} className="text-base font-medium text-white">
+              <Link href={"/contact-us"} className="text-base font-medium text-white">
                 Contact Us
               </Link>
-              <Link href={""} className="text-base font-medium text-white">
+              <Link href={"/about-us"} className="text-base font-medium text-white">
                 About Us
               </Link>
-              <Link href={""} className="text-base font-medium text-white">
+              <Link href={"/success-stories"} className="text-base font-medium text-white">
                 Success Stories
               </Link>
-              <Link href="" className="text-base font-medium text-white">
-                Career
+              <Link href={"/careers"} className="text-base font-medium text-white">
+                Careers
               </Link>
 
-              <Link href={""} className="text-base font-medium text-white">
+              <Link href={"/blogs"} className="text-base font-medium text-white">
                 Blogs
               </Link>
-              <Link href={""} className="text-base font-medium text-white">
+              <Link href={"/privacy-policy"} className="text-base font-medium text-white">
                 Privacy Policy
               </Link>
-              <Link href={""} className="text-base font-medium text-white">
+              <Link href={"/terms-and-conditions"} className="text-base font-medium text-white">
                 Terms & Conditions
               </Link>
             </ul>

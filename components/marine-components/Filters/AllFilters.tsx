@@ -6,17 +6,23 @@ import axios from "@/config/config";
 import { Categories } from "@/types/interface";
 type CategoryAction = { type: "changed_name"; name: string };
 
+export interface allfiltersdata{
+  setBrandState:React.Dispatch<React.SetStateAction<any>>
 
-const AllFilters = () => {
+}
+
+const AllFilters = ({setBrandState}:allfiltersdata) => {
   const [brandsData, setBrandsData] = useState(null);
   const [availabilityData, setAvailabilityData] = useState(null);
   const [categoryData, setCategoryData] = useState<Categories[] | null>([]);
+
 
   useEffect(() => {
     const fetchBrandsData = async () => {
       try {
         const response = await axios.get("/brands");
         setBrandsData(response.data.brands);
+        setBrandState(response.data.brands)
       } catch (errors) {
         console.error("Error fetching brands:", errors);
       }
