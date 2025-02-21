@@ -146,23 +146,7 @@ const SingleBlog = () => {
             </p>
           </div>
 
-          <div className="w-full relative h-auto flex flex-col  gap-2">
-            <h2 className="text-3xl font-medium text-primary ">About Us</h2>
-
-            <p className="w-full relative  text-base font-medium text-secondary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-              modi accusantium, soluta voluptatum sit, ipsa, ea perferendis
-              velit laboriosam delectus harum? Cupiditate in accusamus
-              consequatur maxime nam inventore sint illo?
-            </p>
-            <Image
-              src="/"
-              alt=""
-              height={500}
-              width={500}
-              className="w-full relartive h-[250px] lg:h-[300px]"
-            />
-          </div>
+          <div className="w-full relative h-auto flex flex-col  gap-2"   dangerouslySetInnerHTML={{ __html: data?.content }} />
         </section>
       </section>
 

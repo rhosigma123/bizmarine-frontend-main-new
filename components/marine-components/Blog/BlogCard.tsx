@@ -7,7 +7,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const BlogCard: React.FC<BlogProps> = ({ data }) => {
   return (
-    <div className="p-3 bg-white border rounded-xl">
+    <Link href={`blogs/${data.slug}`} className="p-3 bg-white border rounded-xl">
       <Image
         width={500}
         height={500}
@@ -29,7 +29,7 @@ const BlogCard: React.FC<BlogProps> = ({ data }) => {
         <MdOutlineKeyboardArrowRight className="text-[20px] "/>
         </Link>
       </div>
-    </div>
+    </Link>
   );
 };
 

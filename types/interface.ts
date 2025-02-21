@@ -188,6 +188,7 @@ export interface RelatedBlogProps {
 }
 
 export interface SingleBlogData {
+  content: string | TrustedHTML;
   blog: Blogs;
   related: RelatedBlogs[];
 }

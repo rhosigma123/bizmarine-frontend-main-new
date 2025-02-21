@@ -71,8 +71,6 @@ function MegaMenu({ children, data = [] }: MegaMenuProps) {
   //   fetchData();
   // }, [params.slug]);
 
-  
-
   return (
     <NavigationMenu className="relative w-full">
       <NavigationMenuList className="relative w-full">
@@ -113,15 +111,18 @@ function MegaMenu({ children, data = [] }: MegaMenuProps) {
                     </h2>
 
                     <section className="grid grid-cols-2 items-start justify-start 2xl:grid-cols-3 gap-4 relative h-auto overflow-y-auto">
-                      {selectedProducts.map((product) => (
-                        <Megamenucard
-                          key={product.id}
-                          image={product.image}
-                          title={product.name}
-                          description={product.description}
-                          slug={product.slug}
-                        />
-                      ))}
+                      {selectedProducts.map(
+                        (product, index) =>
+                          index <= 11 && (
+                            <Megamenucard
+                              key={product.id}
+                              image={product.image}
+                              title={product.name}
+                              description={product.description}
+                              slug={product.slug}
+                            />
+                          )
+                      )}
                     </section>
                   </>
                 )}

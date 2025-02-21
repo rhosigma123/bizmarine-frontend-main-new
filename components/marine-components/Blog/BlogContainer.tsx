@@ -103,7 +103,7 @@ const BlogContainer = () => {
         </div>
       </div> */}
 
-      <section className="w-full relative h-auto min-h-[400px] justify-between grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3   gap-1 biz__container  ">
+      <section className="w-full relative h-auto min-h-[400px] justify-between grid grid-cols-1  py-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4   gap-1 biz__container  ">
         {data.length <= 0 && (
           <p className="text-base h-full flex items-center justify-center  font-medium text-secondary ">
             There is no Blog Have Posted Yet .
