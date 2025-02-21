@@ -252,7 +252,12 @@ export interface CartItem {
 }
 
 export interface ViewproductCard {
-  image: string;
+  title:string,
+  subtitle:string,
+  image:string,
+  btntitle:string,
+  btnurl:string,
+  css?:string
 }
 export interface CategoryCardInterface {
   slug: any;

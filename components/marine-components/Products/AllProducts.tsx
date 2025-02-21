@@ -39,14 +39,24 @@ const AllProducts = () => {
     filterFrom
   );
 
-  useEffect(() => {
-    const brandFilterData =
-      state.name === "all"
-        ? data
-        : filteredData.filter((item:any) => item.brand?.name === state.name);
+  // useEffect(() => {
+  //   const brandFilterData =
+  //     state.name === "all"
+  //       ? data
+  //       : filteredData.filter((item:any) => item.brand?.name === state.name);
 
-    setAllFilterProducts(brandFilterData);
-  }, [state, data]);
+  //   setAllFilterProducts(brandFilterData);
+  //   console.log(brandFilterData,"ayan mansoor")
+  // }, [state.name, data]);
+
+  useEffect(() => {
+    const filterBrandProducts = data.filter((item: any) => {
+      return (
+        state.name === "all" || (item.brand && item.brand.name === state.name)
+      );
+    });
+    setAllFilterProducts(filterBrandProducts);
+  }, [state.name, data]);
 
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -55,8 +65,8 @@ const AllProducts = () => {
   };
 
   return (
-    <section className="biz__container gap-5 grid lg:grid-cols-[1fr_3fr] p-5 md:py-10">
-      <div className="hidden lg:grid gap-3 h-fit lg:sticky top-20 bg-background border rounded-md p-5 self-start">
+    <section className="biz__container gap-5 grid xl:grid-cols-[1fr_3fr] p-5 md:py-10">
+      <div className="hidden xl:grid gap-3 h-fit lg:sticky top-20 bg-background border rounded-md p-5 self-start">
         <AllFilters setBrandState={setBrands} />
         <RangeSliderFilter rangeState={filterFrom} setrange={setFilterFrom} />
       </div>

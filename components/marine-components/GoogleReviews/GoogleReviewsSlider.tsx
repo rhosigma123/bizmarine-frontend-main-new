@@ -2,11 +2,13 @@
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/navigation";
-import React, { CSSProperties, useContext } from "react";
+import React, { CSSProperties, useContext, useEffect, useState } from "react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import GoolgeReviewsCard from "./GoolgeReviewsCard";
 import { HomeContext } from "@/app/Context/HomeContext";
+import axios from "axios";
+import apiClient from "@/config/config";
 
 interface CustomCSSProperties extends CSSProperties {
   "--swiper-navigation-color"?: string;
@@ -14,19 +16,42 @@ interface CustomCSSProperties extends CSSProperties {
   "--swiper-navigation-size"?: string;
   "--swiper-navigation-backGround"?: string;
 }
+
+export interface testimonialsinterface {
+  alt_tag: string;
+  comment: string;
+  designation: string;
+  id: number;
+  name: string;
+  order: number;
+  photo: string;
+}
+[];
+
 const GoogleReviewsSlider = () => {
   const swiperStyle: CustomCSSProperties = {
     "--swiper-navigation-color": "#fff",
     "--swiper-pagination-color": "#fff",
     "--swiper-navigation-size": "20px",
-    "--swiper-navigation-backGround": "#4e8bf0",
   };
-  const data = useContext(HomeContext);
+  const [testimonialsdata, setestimonialsdata] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await apiClient.get(`/testimonials`);
+        setestimonialsdata(response.data.testimonials);
+      } catch (errors) {
+        console.log(errors);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <Swiper
-      slidesPerView={2}
-      spaceBetween={30}
+      slidesPerView={"auto"}
+      spaceBetween={10}
       loop={true}
       autoplay={{
         delay: 2000,
@@ -34,25 +59,11 @@ const GoogleReviewsSlider = () => {
       }}
       navigation={true}
       modules={[Autoplay, Navigation]}
-      className="mySwiper googleReviewSwiper   px-0 lg:px-[30px]"
+      className="mySwiper  w-full relative h-auto  px-0 lg:px-[30px]"
       style={swiperStyle}
-      breakpoints={{
-        320: {
-          slidesPerView: 1,
-        },
-        640: {
-          slidesPerView: 1,
-        },
-        768: {
-          slidesPerView: 2,
-        },
-        1024: {
-          slidesPerView: 2,
-        },
-      }}
     >
-      {data?.testimonials.map((testimonials, index) => (
-        <SwiperSlide key={index}>
+      {testimonialsdata?.map((testimonials: any, index: any) => (
+        <SwiperSlide className="max-w-[200px] relative  h-auto  " key={index}>
           <GoolgeReviewsCard data={testimonials} />
         </SwiperSlide>
       ))}

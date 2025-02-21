@@ -12,15 +12,13 @@ import { CartContext } from "@/app/Context/CartContext";
 import { BsCart3 } from "react-icons/bs";
 
 function ProductRigth({ productDetailtype }: any) {
-  const { cartItemCount, addToCart, removeFromCart } = useContext(CartContext);
+  const { addToCart, removeFromCart } = useContext(CartContext);
   const [isInCart, setIsInCart] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  console.log(productDetailtype);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     setQuantity(Number(value));
-    console.log("Selected value:", value);
   };
 
   useEffect(() => {
@@ -142,7 +140,7 @@ function ProductRigth({ productDetailtype }: any) {
           </div>
         </div>
 
-        <div className="w-full relative h-auto flex items-center justify-center  flex-col  2xl:flex-row ">
+        <div className="w-full relative h-auto flex items-center justify-center  flex-wrap">
           <p className="w-full relative h-auto text-foreground bg-lightgray py-3 text-center xl:px-10 rounded-md cursor-pointer">
             Book a Repair Service
           </p>
@@ -156,19 +154,19 @@ function ProductRigth({ productDetailtype }: any) {
       <div className="w-full reltive bg-white rounded-xl p-4 md:p-7 grid grid-cols-2 md:grid-cols-3 gap-5">
         <div className="w-full relative   flex flex-col gap-1 items-center justify-center">
           <CiHeart className=" text-[40px] md:text-[50px] text-primary " />
-          <h2 className=" text-sm md:text-base  font-medium text-foreground uppercase">
+          <h2 className=" text-sm lg:text-base  font-medium text-foreground uppercase">
             1-4 DAYS <br /> DELIVERY
           </h2>
         </div>
         <div className="w-full relative flex flex-col gap-1 items-center justify-center">
           <CiHeart className="text-[40px] md:text-[50px]  text-primary " />
-          <h2 className=" text-sm md:text-base  text-center font-medium text-foreground uppercase">
+          <h2 className=" text-sm lg:text-base  text-center font-medium text-foreground uppercase">
             100% ORIGINAL <br /> QUALITY
           </h2>
         </div>
         <div className="w-full relative flex flex-col gap-1 items-center justify-center">
           <CiHeart className="text-[40px] md:text-[50px]  text-primary " />
-          <h2 className=" text-sm md:text-base font-medium text-foreground uppercase">
+          <h2 className=" text-sm lg:text-base font-medium text-foreground uppercase">
             EXTENDED <br /> WARRANTY
           </h2>
         </div>

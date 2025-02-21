@@ -87,7 +87,7 @@ const Home = () => {
   return (
     <>
       <HomeContext.Provider value={data}>
-        <HeroSection />
+        {/* <HeroSection /> */}
         <ViewProductSection />
         <ProductFIlrterSection
           currentfilter={currentFilter1}
@@ -113,7 +113,7 @@ const Home = () => {
           setcurrentfilter={setCurrentFilter3}
         />
 
-        <WarrentySection  title={""} />
+        <WarrentySection  title={"500K+ Warrantied Parts, 100+ Brands"} />
 
         
       {/* <CategorySliderContainer /> */}

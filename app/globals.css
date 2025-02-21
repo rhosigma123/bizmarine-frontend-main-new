@@ -69,6 +69,10 @@
   --sliderBalls: #fff;
 }
 
+.grecaptcha-badge{
+  display: none !important;
+}
+
 @layer base {
   * {
     @apply border-border;

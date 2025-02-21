@@ -1,10 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import CategoryCollapsibel from "@/components/marine-components/Filters/MajorCategoryFilter";
-import RangeSliderFilter from "@/components/marine-components/RangeFilter";
 import axios from "@/config/config";
 import { Categories } from "@/types/interface";
-type CategoryAction = { type: "changed_name"; name: string };
 
 export interface allfiltersdata{
   setBrandState:React.Dispatch<React.SetStateAction<any>>
@@ -13,7 +11,6 @@ export interface allfiltersdata{
 
 const AllFilters = ({setBrandState}:allfiltersdata) => {
   const [brandsData, setBrandsData] = useState(null);
-  const [availabilityData, setAvailabilityData] = useState(null);
   const [categoryData, setCategoryData] = useState<Categories[] | null>([]);
 
 

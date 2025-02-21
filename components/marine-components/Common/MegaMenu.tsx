@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import Megamenucard from "./Megamenucard";
 import { Products } from "@/types/interface";
+import axios from "axios";
 
 interface Category {
   id: number;
@@ -23,45 +24,54 @@ interface Category {
 
 interface MegaMenuProps {
   children: React.ReactNode;
-  data: any; 
+  data: any;
 }
 
 function MegaMenu({ children, data = [] }: MegaMenuProps) {
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
     data.length > 0 ? data[0] : null
   );
+  const [selectedProducts, setSelectedProducts] = useState<Products[]>([]);
 
-  const [selectedProducts, setSelectedProducts] = useState<Products[]>([]); 
+  // Function to fetch category products
+  const fetchCategoryProducts = async (slug: string | undefined) => {
+    if (!slug) return;
+    try {
+      const response = await apiClient.get(`/categories/${slug}`);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (!selectedCategory || !selectedCategory.slug) {
-        // console.log("ayan mansoor",selectedCategory?.slug)
-      }
-      try {
-        const response = await apiClient.get(
-          `/product/${selectedCategory?.slug}`
-        );
-        if (response?.data?.products) {
-          setSelectedProducts(response.data.products); // Assuming API returns an array
-        } else {
-          setSelectedProducts([]); // Clear products if no data
-        }
-      } catch (error) {
-        console.error("Error fetching product data:", error);
+      if (response?.data?.products) {
+        setSelectedProducts(response.data.products);
+      } else {
         setSelectedProducts([]);
       }
-    };
-    fetchData();
-  }, [selectedCategory]);
+    } catch (error) {
+      console.error("Error fetching product data:", error);
+      setSelectedProducts([]);
+    }
+  };
 
-  if (!data || data.length === 0) {
-    return (
-      <div className="py-4 px-3 text-primary font-medium">
-        No categories available
-      </div>
-    );
-  }
+  // Trigger fetch when the selected category changes
+  useEffect(() => {
+    if (selectedCategory) {
+      fetchCategoryProducts(selectedCategory.slug);
+    }
+  }, [selectedCategory]);
+  //  const [data, setData] = useState<Products[]>([]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(`/categories/${params.slug}`);
+  //       console.log("Collection Data Detailed:", response.data);
+  //       setData(response.data.products);
+  //     } catch (errors) {
+  //       console.log(errors);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [params.slug]);
+
+  
 
   return (
     <NavigationMenu className="relative w-full">
@@ -94,7 +104,7 @@ function MegaMenu({ children, data = [] }: MegaMenuProps) {
               </ul>
 
               {/* Right Column: Products */}
-              <section className="w-full relative justify-between px-5 flex flex-col items-start gap-5">
+              <section className="w-full relative justify-start px-5 flex flex-col items-start gap-5">
                 {selectedProducts.length > 0 && (
                   <>
                     <h2 className="text-base font-medium text-foreground flex items-center gap-3">
@@ -102,7 +112,7 @@ function MegaMenu({ children, data = [] }: MegaMenuProps) {
                       <MdKeyboardArrowRight className="text-[20px] font-medium cursor-pointer" />
                     </h2>
 
-                    <section className="grid grid-cols-2 items-start justify-start 2xl:grid-cols-3 gap-4 relative h-auto">
+                    <section className="grid grid-cols-2 items-start justify-start 2xl:grid-cols-3 gap-4 relative h-auto overflow-y-auto">
                       {selectedProducts.map((product) => (
                         <Megamenucard
                           key={product.id}
@@ -117,8 +127,8 @@ function MegaMenu({ children, data = [] }: MegaMenuProps) {
                 )}
 
                 <Link
-                  href="/categories"
-                  className="text-lg font-medium text-secondary text-center w-full cursor-pointer"
+                  href="/products"
+                  className="text-lg font-medium absolute bottom-3 py-3 bg-white z-10 text-secondary text-center w-full cursor-pointer"
                 >
                   View All
                 </Link>

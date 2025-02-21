@@ -1,7 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import React, { useEffect, useState, useContext } from "react";
-import { BiCartDownload } from "react-icons/bi";
 import NumberOfProducts from "../NumberOfProducts";
 import { CartContext } from "@/app/Context/CartContext";
 import { CiHeart } from "react-icons/ci";

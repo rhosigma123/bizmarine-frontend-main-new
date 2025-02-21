@@ -8,7 +8,6 @@ import { TestimonialsCardProps } from "@/types/interface";
 import { BASE_URL } from "@/config/config";
 
 const GoolgeReviewsCard: React.FC<TestimonialsCardProps> = ({ data }) => {
-  console.log("testimonials ", data);
 
   return (
     <div className="border relative content-start rounded-xl  flex flex-col gap-3 bg-white p-5">

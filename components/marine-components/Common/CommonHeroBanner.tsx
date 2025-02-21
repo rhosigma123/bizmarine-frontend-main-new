@@ -1,26 +1,15 @@
-"use client";
+import React from "react";
 import Image from "next/image";
-import React, { useContext } from "react";
-import SearchField from "./SearchField";
 import Link from "next/link";
-import { Button } from "../ui/button";
-import { BASE_URL } from "@/config/config";
 
-export  interface  HerobannerSection{
-  title:string,
-  subtitle:string,
-  image:string,
-  btntitle:string,
-  btnurl:string,
-  css?:string
-}
-
-const HeroSection = ({title,css,subtitle,image,btntitle,btnurl}:HerobannerSection) => {
+function CommonHeroBanner() {
   return (
-    <section className={`w-full relative h-auto flex overflow-hidden items-center mt-10 rounded-lg justify-between  bg-white ${css ? css:"biz__container"} `}>
+    <section
+      className={`w-full relative h-auto flex overflow-hidden items-center mt-10 rounded-lg justify-between  bg-white biz__container `}
+    >
       <div className="w-full relative h-auto flex items-center rounded-xl overflow-hidden">
         <Image
-          src={`${BASE_URL}${image}`}
+          src={"/heroimage.png"}
           alt="viewProductimage"
           height={700}
           width={700}
@@ -35,21 +24,24 @@ const HeroSection = ({title,css,subtitle,image,btntitle,btnurl}:HerobannerSectio
                 Unique application needs
               </p>
               <h2 className="  text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl  mt-2 font-semibold  text-white">
-                {title}
+                Proffessional marine automation parts
               </h2>
             </span>
             <p className=" text-sm md:text-base mt-5 font-medium text-white">
-              {subtitle}
+              50 years of experience in Marine Automation Industry
             </p>
 
-            <Link href={`${btnurl}`} className="text-white bg-primary hover:bg-white hover:border-primary border-transparent border hover:text-primary mt-5 px-5 py-2 rounded-lg  w-fit relative">
-              {btntitle}
+            <Link
+              href={`/products`}
+              className="text-white bg-primary hover:bg-white hover:border-primary border-transparent border hover:text-primary mt-5 px-5 py-2 rounded-lg  w-fit relative"
+            >
+              Shop Now
             </Link>
           </div>
         </div>
       </div>
     </section>
   );
-};
+}
 
-export default HeroSection;
+export default CommonHeroBanner;

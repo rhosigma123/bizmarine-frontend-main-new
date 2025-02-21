@@ -9,6 +9,7 @@ import ViewProductSection from "../Home/ViewProductSection";
 import MarineShopbanner from "../Home/MarineShopbanner";
 import HeroSection from "../HeroSection";
 import ContentLoader from "react-content-loader";
+import CommonHeroBanner from "../Common/CommonHeroBanner";
 
 
 const CollectionsContainer = () => {
@@ -75,7 +76,7 @@ const CollectionsContainer = () => {
         ))}
       </div>
       <MarineShopbanner />
-      <HeroSection />
+      <CommonHeroBanner />
       <ViewProductSection />
     </>
   );

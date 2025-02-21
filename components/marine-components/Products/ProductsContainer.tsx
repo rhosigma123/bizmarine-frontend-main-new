@@ -13,6 +13,7 @@ const ProductsContainer: React.FC<ProductsCardProps> = ({
     return <p className="text-center">No products available.</p>;
   }
 
+
   return (
     <div
       className={`grid gap-2 sm:gap-5  ${
