@@ -57,14 +57,14 @@ const SingleCollectionProducts = () => {
         <RangeSliderFilter rangeState={filterFrom} setrange={setFilterFrom} />
       </div>
       <div className="grid gap-5 lx:gap-10 content-start">
-        <section className="w-full relative flex items-center justify-between">
+        <section className="w-full relative flex items-start lg:items-center flex-col lg:flex-row justify-between">
           <span className="flex flex-col items-start gap-1">
             <h2 className=" text-2xl lg:text-3xl font-medium text-primary  capitalize">
               Collection of Products
             </h2>
-            <p className="text-base sm:text-lg text-secondray leading-5">
+            {/* <p className="text-base sm:text-lg text-secondray leading-5">
               Showing 1–9 of 35 results
-            </p>
+            </p> */}
           </span>
           <SortView
             toggleListHandler={dispatch}
@@ -74,7 +74,8 @@ const SingleCollectionProducts = () => {
         </section>
 
         {data.length <= 0 ? (
-          <ContentLoader viewBox="0 0 90% 900" height={700} width={"100%"}>
+          <section className="w-full relative h-[70vh] ">
+          <ContentLoader viewBox="0 0 100% 100%" height={"100%"} width={"100%"}>
             <rect x="30" y="20" rx="8" ry="8" width="200" height="200" />
             <rect x="30" y="250" rx="0" ry="0" width="200" height="18" />
             <rect x="30" y="275" rx="0" ry="0" width="120" height="20" />
@@ -112,8 +113,9 @@ const SingleCollectionProducts = () => {
             <rect x="1130" y="570" rx="0" ry="0" width="200" height="18" />
             <rect x="1130" y="595" rx="0" ry="0" width="120" height="20" />
           </ContentLoader>
+          </section>
         ) : (
-          <ProductsContainer gridView={true} data={data} />
+          <ProductsContainer gridView={true} data={data} cardcss="max-w-full" />
         )}
       </div>
     </section>

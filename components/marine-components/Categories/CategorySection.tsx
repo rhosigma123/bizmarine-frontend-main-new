@@ -36,7 +36,7 @@ function CategorySection({ title }: CardSectionProps) {
             {title}
           </h2>
 
-          <section className="w-full  relative h-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-4 gap-5 ">
+          <section className="w-full  relative h-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-4 md:gap-5 gap-2 ">
             {data?.category?.map((item, index) => (
               <CategoryCard
                 data={{

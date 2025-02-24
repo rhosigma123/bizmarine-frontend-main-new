@@ -7,6 +7,7 @@ import { CartContext } from "@/app/Context/CartContext";
 import useProductData from "@/components/CustomHooks/ProductHook";
 import ContentLoader from "react-content-loader";
 import ProductGridCard from "../Products/ProductGridCard";
+import NewProductGridCard from "../Products/NewProductGridCard";
 
 import { CartItem } from "@/types/interface";
 
@@ -138,7 +139,7 @@ const CartContainer = () => {
 
         {cartItems.length > 0 ? (
           <>
-            <section className="w-full relative h-auto gap-4 md:gap-2 grid grid-cols-2 sm:grid-cols-1">
+            <section className="w-full relative h-auto gap-3 sm:gap-4 md:gap-2 grid grid-cols-2 sm:grid-cols-1">
               {cartItems.map((item) => (
                 <CartCard onDelete={handleDelete} key={item.id} item={item} />
               ))}
@@ -190,7 +191,6 @@ const CartContainer = () => {
       </div>
 
       {data.length <= 0 ? (
-        
         <ContentLoader viewBox="0 0 1360 900" height={"100%"} width={"100%"}>
           <rect x="30" y="20" rx="8" ry="8" width="200" height="200" />
           <rect x="30" y="250" rx="0" ry="0" width="200" height="18" />
@@ -208,16 +208,21 @@ const CartContainer = () => {
         <>
           <section className="w-full biz__container relative h-auto flex flex-col items-start gap-5 md:gap-10 py-10 md:py-20">
             <span className="w-full relative h-auto border-b py-3 flex items-center justify-between ">
-              <h2 className="text-3xl font-medium text-primary uppercase flex items-center gap-4 ">
+              <h2 className=" text-base md:text-xl lg:text-3xl font-medium text-primary uppercase flex items-center gap-4 ">
                 YOU may also like
               </h2>
             </span>
 
-            <section className="w-full relative h-auto grid  grid-cols-2 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 gap-5 ">
-              {data.map((item, index) => (
-                <ProductGridCard data={item} key={index} wishlist={false} />
-              ))}
+            <section className="w-full relative h-auto grid  grid-cols-2 md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 gap-2 md:gap-5 ">
+              {data.map(
+                (item, index) =>
+                  index <= 4 && (
+                    <NewProductGridCard data={item} key={index} wishlist={false} />
+                  )
+              )}
             </section>
+
+            <Link href={"/products"} className="w-fit relative h-auto flex items-center justify-cwenter bg-primary text-white px-7 rounded-lg mx-auto  py-2">View More</Link>
           </section>
         </>
       )}

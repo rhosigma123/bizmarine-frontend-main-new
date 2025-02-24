@@ -102,7 +102,7 @@ function MegaMenu({ children, data = [] }: MegaMenuProps) {
               </ul>
 
               {/* Right Column: Products */}
-              <section className="w-full relative justify-start px-5 flex flex-col items-start gap-5">
+              <section className="w-full h-full relative justify-start px-5 flex flex-col items-start gap-5"        id="style-3">
                 {selectedProducts.length > 0 && (
                   <>
                     <h2 className="text-base font-medium text-foreground flex items-center gap-3">

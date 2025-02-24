@@ -106,16 +106,16 @@ const CallToActionForm = () => {
 
     <form
       action=""
-      className="w-full relative bg-white h-auto flex flex-col  p-7 lg:p-5 xl:p-10 rounded-lg"
+      className="w-full relative bg-white h-auto flex flex-col  p-4 lg:p-5 xl:p-10 rounded-lg"
     >
-      <h2 className="text-4xl font-medium text-primary ">Contact Bizmarine</h2>
-      <p className="text-base font-medium text-secondary ">
+      <h2 className=" text-3xl  lg:text-4xl font-medium text-primary ">Contact Bizmarine</h2>
+      <p className="  mt-2 text-base font-medium text-secondary ">
         Leave your message and we&apos;ll get back to you shortly
       </p>
 
       <section className="w-full mt-6 reltive h-auto grid grid-cols-2 gap-3 lg:gap-3 xl:gap-5">
         <div className="w-full reltive h-auto flex flex-col gap-1 col-start-1 md:col-end-2 col-end-3">
-          <label htmlFor="" className="text-base font-medium text-forground  ">
+          <label htmlFor="" className="text-base font-medium text-forground hidden md:block ">
             Name *
           </label>
           <input
@@ -125,7 +125,7 @@ const CallToActionForm = () => {
           />
         </div>
         <div className="w-full reltive h-auto flex flex-col gap-1 col-start-1 md:col-start-2 col-end-3 ">
-          <label htmlFor="" className="text-base font-medium text-forground  ">
+          <label htmlFor="" className="text-base font-medium text-forground   hidden md:block ">
             Email *
           </label>
           <input
@@ -136,7 +136,7 @@ const CallToActionForm = () => {
         </div>
 
         <div className="w-full reltive h-auto flex flex-col gap-1 col-start-1 md:col-end-2 col-end-3">
-          <label htmlFor="" className="text-base font-medium text-forground  ">
+          <label htmlFor="" className="text-base font-medium text-forground   hidden md:block ">
             Country *
           </label>
           <input
@@ -147,7 +147,7 @@ const CallToActionForm = () => {
         </div>
 
         <div className="w-full reltive h-auto flex flex-col gap-1 col-start-1 md:col-start-2 col-end-3">
-          <label htmlFor="" className="text-base font-medium text-forground  ">
+          <label htmlFor="" className="text-base font-medium text-forground   hidden md:block ">
             Phone *
           </label>
           <input
@@ -158,7 +158,7 @@ const CallToActionForm = () => {
         </div>
 
         <div className="w-full reltive h-auto flex flex-col gap-1 col-start-1 col-end-3">
-          <label htmlFor="" className="text-base font-medium text-forground  ">
+          <label htmlFor="" className="text-base font-medium text-forground   hidden md:block ">
             Message
           </label>
           <textarea

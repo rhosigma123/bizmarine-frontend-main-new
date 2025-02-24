@@ -95,7 +95,7 @@ function ProductRigth({ productDetailtype }: any) {
         </p> */}
 
         <div
-          className="w-full relative h-auto line-clamp-[20]"
+          className="w-full relative h-auto line-clamp-[20] text-base font-medium"
           dangerouslySetInnerHTML={{ __html: productDetailtype.content }}
         />
 
@@ -122,13 +122,14 @@ function ProductRigth({ productDetailtype }: any) {
             <option value="4">4</option>
           </select>
           <div className="w-full gap-1 2xl:gap-3 relative h-auto flex 2xl:flex-row flex-col items-center justify-center">
-            <button
-              className={`w-full relative flex justify-center items-center gap-2 h-auto text-center text-white bg-primary   py-2 px-4 rounded-xl    `}
-              onClick={handleAddToCart}
-            >
-              {isInCart && <BsCart3 className="text-[22px] text-white" />}
-              Add to Cart
-            </button>
+              <button
+                className={`w-full relative  justify-center items-center gap-2 h-auto text-center text-white bg-primary   py-2 px-4 rounded-xl   ${isInCart ? "hidden":" flex"}  `}
+                onClick={handleAddToCart}
+              >
+                <BsCart3 className="text-[22px] text-white" />
+                Add to Cart
+              </button>
+
             {isInCart && (
               <button
                 className={` relative flex justify-center 2xl:w-fit w-full items-center gap-2 h-auto text-center text-white bg-red-600 py-2 px-4 rounded-xl    `}

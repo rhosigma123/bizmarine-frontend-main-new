@@ -93,6 +93,7 @@ const Home = () => {
           currentfilter={currentFilter1}
           setcurrentfilter={setCurrentFilter1}
           title={"POPULAR PRODUCTS"}
+          cardcss="max-w-[220px] md:max-w-[300px]  h-full"
         />
         <CategorySection
           title={"Top Industrial and Marine Automation Categories"}
@@ -102,6 +103,7 @@ const Home = () => {
           currentfilter={currentFilter2}
           setcurrentfilter={setCurrentFilter2}
           title={"Marine Automation Products"}
+          cardcss="max-w-[220px] md:max-w-[300px]  h-full"
         />
         <CategorySection
           title={"Top Industrial and Marine Automation Categories"}
@@ -111,6 +113,7 @@ const Home = () => {
           title={"POPULAR PRODUCTS"}
           currentfilter={currentFilter3}
           setcurrentfilter={setCurrentFilter3}
+          cardcss="max-w-[220px] md:max-w-[300px]  h-full"
         />
 
         <WarrentySection  title={"500K+ Warrantied Parts, 100+ Brands"} />

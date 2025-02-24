@@ -12,16 +12,16 @@ type MegaMenuCardtype={
 
 function Megamenucard({image,title, description ,slug}:MegaMenuCardtype) {
   return (
-    <Link href={`/products/${slug}`} className=" w-[200px]   relative h-[200px]  flex flex-col gap-1 bg-lightgray p-4 rounded-md">
+    <Link href={`/products/${slug}`} className=" w-[200px]   relative h-[200px]  flex flex-col gap-1 bg-lightgray p-2 rounded-md">
       <Image
         src={`${BASE_URL}${image || ""}`}
         alt={title}
         height={300}
         width={300}
-        className="   h-[150px] w-full relative rounded-lg  cursor-pointer"
+        className="   h-[150px] border p-1 w-full relative rounded-lg  cursor-pointer"
       />
-      <h2 className=" text-base  font-medium text-primary  text-center">
-        {description}
+      <h2 className=" text-sm md:text-base  line-clamp-2 font-medium text-primary  text-center">
+        {title}
       </h2>
     </Link>
   );

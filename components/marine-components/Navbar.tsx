@@ -35,7 +35,7 @@ const Navbar = () => {
           logo={data?.info.header_logo}
         />
         <SearchField className=" w-full max-w-full  2xl:max-w-[700px] col-start-1 col-end-5 row-start-2 row-end-3 col-span-3" />
-        <Userprofile />
+        {/* <Userprofile /> */}
         <CartBtn />
         <MobNavigation />
       </nav>

@@ -48,12 +48,12 @@ const ContactForm = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="w-full relative h-auo flex gap-3 flex-col">
-        <h2 className=" text-xl md:text-2xl lg:text-3xl font-medium text-primary h-auto py-2 border-b ">Connect with Bizmarine</h2>
+        <h2 className=" text-2xl lg:text-3xl font-medium text-primary h-auto py-2 border-b ">Connect with Bizmarine</h2>
         <p className="text-base font-medium text-secondary">Fill out the form and we’ll reach back to you asap</p>
       </div>
 
       <section  className="grid md:grid-cols-2 gap-5 mt-5  w-full rounded-xl">
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1">
         <label
           htmlFor="name"
           className="text-md text-primary font-medium flex items-center gap-2 pl-2"
@@ -76,7 +76,7 @@ const ContactForm = () => {
         )}
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col  gap-1">
         <label
           htmlFor="phone"
           className="text-md text-primary font-medium flex items-center gap-2 pl-2"
@@ -99,7 +99,7 @@ const ContactForm = () => {
         )}
       </div>
 
-      <div className="md:col-span-2 flex flex-col gap-2">
+      <div className="md:col-span-2 flex flex-col gap-1 ">
         <label
           htmlFor="email"
           className="text-md text-primary font-medium flex items-center gap-2 pl-2"
@@ -123,7 +123,7 @@ const ContactForm = () => {
       </div>
 
       {/* Textarea for Message (optional) */}
-      <div className="md:col-span-2 flex flex-col gap-2">
+      <div className="md:col-span-2 flex flex-col gap-1">
         <label
           htmlFor="message"
           className="text-md text-primary font-medium flex items-center gap-2 pl-2"

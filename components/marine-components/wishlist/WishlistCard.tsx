@@ -6,6 +6,7 @@ import { BASE_URL } from "@/config/config";
 import { wishlistinterface } from "@/types/interface";
 import WishlistAddtoCard from "./WishlistAddtoCardbtn";
 import { BsFillPatchCheckFill } from "react-icons/bs";
+import NewProductGridCard from "../Products/NewProductGridCard";
 
 
 const WishlistCard: React.FC<wishlistinterface> = ({data}) => {
@@ -16,7 +17,7 @@ const WishlistCard: React.FC<wishlistinterface> = ({data}) => {
         href={`/products/${data.slug}`}
       >
         <Image
-          className={` transition-all ease-linear sm:h-[150px] h-[150px]   w-full   object-cover   `}
+          className={` w-full p-1 relative  border rounded-md max-w-full object-contain h-[150px] md:h-[200px] `}
           src={`${BASE_URL}${data.image || ""}`}
           // src="/Drone-image.png"
           width={100}
@@ -24,7 +25,7 @@ const WishlistCard: React.FC<wishlistinterface> = ({data}) => {
           alt={data.alt_tag||""}
         />
         <div className="w-full relative h-auto flex flex-col items-start gap-1">
-          <h3 className=" text-lg leading-5 line-clamp-3 font-medium text-foreground">
+          <h3 className=" text-sm md:text-base leading-5 line-clamp-3 font-medium text-foreground">
             {data.name}
           </h3>
           {data?.price && (

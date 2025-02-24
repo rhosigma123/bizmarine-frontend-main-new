@@ -8,7 +8,7 @@ function WhyChoose() {
         Why Choose Bizmarine?
       </h2>
 
-      <div className="w-full relative h-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4">
+      <div className="w-full relative h-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5  gap-2 md:gap-4">
         <WhyChooseCard
           title="Unmatched Quality & Reliability"
           description="Sourced from top manufacturers, ensuring durability and performance."

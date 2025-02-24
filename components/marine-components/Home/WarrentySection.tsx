@@ -41,8 +41,8 @@ function WarrentySection({ branddata, title }: BrandInterface) {
               />
             ))}
 
-            <div className="w-full relative flex h-[200px]  items-center justify-center cursor-pointer rounded-xl border ">
-              <p className="text-xl font-medium text-primary hover:underline ">
+            <div className="  w-fit  px-5 py-1 bg-primary md:bg-transparent  text-white  md:text-primary md:w-full relative flex h-auto  md:h-[200px]  items-center justify-center cursor-pointer rounded-xl border ">
+              <p className="text-xl font-medium  hover:underline ">
                 View All
               </p>
             </div>

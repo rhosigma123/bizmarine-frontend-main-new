@@ -34,7 +34,7 @@ const ContactUs = () => {
   return (
     <>
       <MarineBreadCrumb />
-      <div className=" biz__container grid grid-cols-1 lg:grid-cols-2 gap-20 content-start p-5 md:pt-5 pb-10">
+      <div className=" biz__container grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-10 content-start p-5 md:pt-5 pb-10">
         <h2 className="lg:col-span-2 text-2xl font-medium text-secondary-foreground">
           Contact Us
         </h2>

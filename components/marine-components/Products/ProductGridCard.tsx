@@ -15,7 +15,7 @@ const ProductGridCard: React.FC<ProductGridCardProps> = ({
   return (
     <div className="group bg-white p-2 md:p-3 justify-items-center border rounded-md grid gap-2 h-auto md:gap-5">
       <Link
-        className="grid gap-2 md:gap-5 justify-items-center h-fit"
+        className="grid gap-2 md:gap-5 justify-items-center  h-fit"
         href={`/products/${data.slug}`}
       >
         <Image

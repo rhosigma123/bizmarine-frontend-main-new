@@ -28,8 +28,8 @@ const BrandsContainer = () => {
 
   if (!data) {
     return (
-      <h1 className="h-[calc(100vh-150px)] biz__container w-full relative ">
-        <ContentLoader viewBox="0 0 1360 900" height={"!00%"} width={"100%"}>
+      <h1 className="h-[calc(100vh-150px)]  w-full relative ">
+        <ContentLoader viewBox="0 0 100% 100%" height={"100%"} width={"100%"}>
           <rect x="30" y="20" rx="8" ry="8" width="200" height="200" />
           <rect x="30" y="250" rx="0" ry="0" width="200" height="18" />
           <rect x="30" y="275" rx="0" ry="0" width="120" height="20" />
@@ -74,7 +74,7 @@ const BrandsContainer = () => {
   return (
     <>
       <section className="w-full relative h-auto pb-10">
-        <div className="biz__container grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-5 p-5 pb-10 md:py-10">
+        <div className="biz__container grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 md:gap-5 p-5 pb-10 md:py-10">
           {data.map((brand: any) => (
             <BrandsCard key={brand.id} data={brand} />
           ))}

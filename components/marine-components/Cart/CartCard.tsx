@@ -42,7 +42,7 @@ const CartCard: React.FC<{
   };
 
   return (
-    <div className="grid gap-5 items-start grid-cols-1 w-full sm:grid-cols-[100px_2.2fr_1fr_1fr]  lg:grid-cols-[100px_2.2fr_1fr_1.2fr_1.2fr] border  justify-items-start md:justify-items-center justify-start  md:justify-between p-2 md:items-center rounded-xl">
+    <div className="grid gap-2 md:gap-5 items-start grid-cols-1 w-full sm:grid-cols-[100px_2.2fr_1fr_1fr]  lg:grid-cols-[100px_2.2fr_1fr_1.2fr_1.2fr] border  justify-items-start md:justify-items-center justify-start  md:justify-between p-2 md:items-center rounded-xl">
       <Image
         src={`${BASE_URL}${item.image || ""}`}
         height={100}
@@ -52,7 +52,7 @@ const CartCard: React.FC<{
       />
       <Link
         href={`/products/${`${item.name}`.split(" ").join("-").toLocaleLowerCase()}`}
-        className="underline text-primary font-bold line-clamp-3 text-base"
+        className=" sm:underline text-primary font-bold line-clamp-2 text-base"
       >
         {item.name}
       </Link>

@@ -11,10 +11,8 @@ import HeroSection from "../HeroSection";
 import ContentLoader from "react-content-loader";
 import CommonHeroBanner from "../Common/CommonHeroBanner";
 
-
 const CollectionsContainer = () => {
   const [data, setData] = useState<Categories[] | null>([]);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,24 +58,26 @@ const CollectionsContainer = () => {
 
   return (
     <>
-      <div className="biz__container grid grid-cols-2  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 p-5 pb-10 md:py-10">
-        {data.map((category: any,index) => (
-          // <CollectionCard key={category.id} data={category} />
-          <CategoryCard
-            data={{
-              slug: `${category.slug}`,
-              image: `${category.image}`,
-              alt_tag: `${category.alt_tag}`,
-              name: `${category.name}`,
-              totalProducts: `${data.length}`,
-            }}
-            key={index}
-          />
-        ))}
-      </div>
-      <MarineShopbanner />
-      <CommonHeroBanner />
-      <ViewProductSection />
+      <section className="w-full reltive h-auto flex flex-col pb-10">
+        <div className="biz__container grid grid-cols-2  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-2 md:gap-5 p-5 pb-10 md:py-10">
+          {data.map((category: any, index) => (
+            // <CollectionCard key={category.id} data={category} />
+            <CategoryCard
+              data={{
+                slug: `${category.slug}`,
+                image: `${category.image}`,
+                alt_tag: `${category.alt_tag}`,
+                name: `${category.name}`,
+                totalProducts: `${data.length}`,
+              }}
+              key={index}
+            />
+          ))}
+        </div>
+        <MarineShopbanner />
+        <CommonHeroBanner />
+        {/* <ViewProductSection /> */}
+      </section>
     </>
   );
 };

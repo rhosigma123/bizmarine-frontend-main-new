@@ -31,18 +31,13 @@ const SingleBrandProducts = () => {
 
   const { data, isLoading, error } = useBrandProductData(params.slug || "");
 
-  console.log(data)
+  console.log(data);
 
- 
-
-  const currentbrand=[
+  const currentbrand = [
     {
-      name:`${params.slug}`.split("-").join(" ")
-    }
-  ]
-
-
-  
+      name: `${params.slug}`.split("-").join(" "),
+    },
+  ];
 
   return (
     <section className=" biz__container gap-5 grid items-start md:grid-cols-[1fr_2fr] lg:grid-cols-[1fr_3fr] p-5 pb-10 md:py-10">
@@ -51,10 +46,13 @@ const SingleBrandProducts = () => {
         <RangeSliderFilter rangeState={filterFrom} setrange={setFilterFrom} />
       </div>
       <div className="grid gap-5 content-start">
-        <section className="w-full relative h-auto flex items-center justify-between">
-          <h2 className="text-3xl font-medium text-primary  capitalize">Brand Products</h2>
+        <section className="w-full relative h-auto flex flex-col lg:flex-row items-start lg:items-center justify-between">
+       
+          <h2 className="text-3xl font-medium text-primary  capitalize">
+            Brand Products
+          </h2>
           <p className="text-base sm:text-lg text-secondray-foreground leading-5"></p>
-     
+
           <SortView
             toggleListHandler={dispatch}
             data={data}
@@ -63,46 +61,52 @@ const SingleBrandProducts = () => {
 
         </section>
         {AllFilterdProducts.length <= 0 ? (
-          <ContentLoader viewBox="0 0 90% 900" height={700} width={"100%"}>
-            <rect x="30" y="20" rx="8" ry="8" width="200" height="200" />
-            <rect x="30" y="250" rx="0" ry="0" width="200" height="18" />
-            <rect x="30" y="275" rx="0" ry="0" width="120" height="20" />
-            <rect x="250" y="20" rx="8" ry="8" width="200" height="200" />
-            <rect x="250" y="250" rx="0" ry="0" width="200" height="18" />
-            <rect x="250" y="275" rx="0" ry="0" width="120" height="20" />
-            <rect x="470" y="20" rx="8" ry="8" width="200" height="200" />
-            <rect x="470" y="250" rx="0" ry="0" width="200" height="18" />
-            <rect x="470" y="275" rx="0" ry="0" width="120" height="20" />
-            <rect x="690" y="20" rx="8" ry="8" width="200" height="200" />
-            <rect x="690" y="250" rx="0" ry="0" width="200" height="18" />
-            <rect x="690" y="275" rx="0" ry="0" width="120" height="20" />
-            <rect x="910" y="20" rx="8" ry="8" width="200" height="200" />
-            <rect x="910" y="250" rx="0" ry="0" width="200" height="18" />
-            <rect x="910" y="275" rx="0" ry="0" width="120" height="20" />
-            <rect x="1130" y="20" rx="8" ry="8" width="200" height="200" />
-            <rect x="1130" y="250" rx="0" ry="0" width="200" height="18" />
-            <rect x="1130" y="275" rx="0" ry="0" width="120" height="20" />
-            <rect x="30" y="340" rx="8" ry="8" width="200" height="200" />
-            <rect x="30" y="570" rx="0" ry="0" width="200" height="18" />
-            <rect x="30" y="595" rx="0" ry="0" width="120" height="20" />
-            <rect x="250" y="340" rx="8" ry="8" width="200" height="200" />
-            <rect x="250" y="570" rx="0" ry="0" width="200" height="18" />
-            <rect x="250" y="595" rx="0" ry="0" width="120" height="20" />
-            <rect x="470" y="340" rx="8" ry="8" width="200" height="200" />
-            <rect x="470" y="570" rx="0" ry="0" width="200" height="18" />
-            <rect x="470" y="595" rx="0" ry="0" width="120" height="20" />
-            <rect x="690" y="340" rx="8" ry="8" width="200" height="200" />
-            <rect x="690" y="570" rx="0" ry="0" width="200" height="18" />
-            <rect x="690" y="595" rx="0" ry="0" width="120" height="20" />
-            <rect x="910" y="340" rx="8" ry="8" width="200" height="200" />
-            <rect x="910" y="570" rx="0" ry="0" width="200" height="18" />
-            <rect x="910" y="595" rx="0" ry="0" width="120" height="20" />
-            <rect x="1130" y="340" rx="8" ry="8" width="200" height="200" />
-            <rect x="1130" y="570" rx="0" ry="0" width="200" height="18" />
-            <rect x="1130" y="595" rx="0" ry="0" width="120" height="20" />
-          </ContentLoader>
+          <section className="w-full relative h-auto ">
+            <ContentLoader viewBox="0 0 100% 100%" height={"100%"} width={"100%"}>
+              <rect x="30" y="20" rx="8" ry="8" width="200" height="200" />
+              <rect x="30" y="250" rx="0" ry="0" width="200" height="18" />
+              <rect x="30" y="275" rx="0" ry="0" width="120" height="20" />
+              <rect x="250" y="20" rx="8" ry="8" width="200" height="200" />
+              <rect x="250" y="250" rx="0" ry="0" width="200" height="18" />
+              <rect x="250" y="275" rx="0" ry="0" width="120" height="20" />
+              <rect x="470" y="20" rx="8" ry="8" width="200" height="200" />
+              <rect x="470" y="250" rx="0" ry="0" width="200" height="18" />
+              <rect x="470" y="275" rx="0" ry="0" width="120" height="20" />
+              <rect x="690" y="20" rx="8" ry="8" width="200" height="200" />
+              <rect x="690" y="250" rx="0" ry="0" width="200" height="18" />
+              <rect x="690" y="275" rx="0" ry="0" width="120" height="20" />
+              <rect x="910" y="20" rx="8" ry="8" width="200" height="200" />
+              <rect x="910" y="250" rx="0" ry="0" width="200" height="18" />
+              <rect x="910" y="275" rx="0" ry="0" width="120" height="20" />
+              <rect x="1130" y="20" rx="8" ry="8" width="200" height="200" />
+              <rect x="1130" y="250" rx="0" ry="0" width="200" height="18" />
+              <rect x="1130" y="275" rx="0" ry="0" width="120" height="20" />
+              <rect x="30" y="340" rx="8" ry="8" width="200" height="200" />
+              <rect x="30" y="570" rx="0" ry="0" width="200" height="18" />
+              <rect x="30" y="595" rx="0" ry="0" width="120" height="20" />
+              <rect x="250" y="340" rx="8" ry="8" width="200" height="200" />
+              <rect x="250" y="570" rx="0" ry="0" width="200" height="18" />
+              <rect x="250" y="595" rx="0" ry="0" width="120" height="20" />
+              <rect x="470" y="340" rx="8" ry="8" width="200" height="200" />
+              <rect x="470" y="570" rx="0" ry="0" width="200" height="18" />
+              <rect x="470" y="595" rx="0" ry="0" width="120" height="20" />
+              <rect x="690" y="340" rx="8" ry="8" width="200" height="200" />
+              <rect x="690" y="570" rx="0" ry="0" width="200" height="18" />
+              <rect x="690" y="595" rx="0" ry="0" width="120" height="20" />
+              <rect x="910" y="340" rx="8" ry="8" width="200" height="200" />
+              <rect x="910" y="570" rx="0" ry="0" width="200" height="18" />
+              <rect x="910" y="595" rx="0" ry="0" width="120" height="20" />
+              <rect x="1130" y="340" rx="8" ry="8" width="200" height="200" />
+              <rect x="1130" y="570" rx="0" ry="0" width="200" height="18" />
+              <rect x="1130" y="595" rx="0" ry="0" width="120" height="20" />
+            </ContentLoader>
+          </section>
         ) : (
-          <ProductsContainer gridView={true} data={AllFilterdProducts} />
+          <ProductsContainer
+            gridView={true}
+            data={AllFilterdProducts}
+            cardcss="max-w-full"
+          />
         )}
       </div>
     </section>

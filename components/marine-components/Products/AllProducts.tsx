@@ -129,7 +129,7 @@ const AllProducts = () => {
             <rect x="1130" y="595" rx="0" ry="0" width="120" height="20" />
           </ContentLoader>
         ) : (
-          <ProductsContainer gridView={true} data={AllFilterdProducts} />
+          <ProductsContainer gridView={true} data={AllFilterdProducts}  cardcss="max-w-full"/>
         )}
 
         {/* Pagination */}

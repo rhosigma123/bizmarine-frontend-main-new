@@ -111,9 +111,9 @@ const Footer = () => {
   return (
     <>
       <footer className=" bg-[#222222]  md:p-10 border-t  ">
-        <div className=" biz__container  pb-5 flex justify-start md:justify-between px-0 items-center gap-5 flex-wrap border-b border-white ">
-          <div className="grid gap-2">
-            <h2 className=" text-xl md:text-2xl lg:text-3xl text-primary  font-semibold">
+        <div className=" biz__container  pt-5 md:pt-0 pb-5 flex justify-start md:justify-between px-0 items-center gap-5 flex-wrap border-b border-white ">
+          <div className="grid gap-0 md:gap-2">
+            <h2 className=" text-2xl md:text-2xl lg:text-3xl text-primary  font-semibold">
               Newsletter
             </h2>
             <span className=" text-base md:text-lg text-white font-normal">
@@ -271,8 +271,8 @@ const Footer = () => {
         </div> */}
         </section>
       </footer>
-      <section className="w-full relative h-auto flex py-2  items-center justify-center bg-primary text-white">
-        <p className="text-white text-lg font-medium ">
+      <section className="w-full text-center relative h-auto flex py-2  items-center justify-center bg-primary text-white">
+        <p className="text-white text-base md:text-lg font-medium ">
           Copyright © {new Date().getFullYear()} Bizmarine - All Rights Reserved
         </p>
       </section>

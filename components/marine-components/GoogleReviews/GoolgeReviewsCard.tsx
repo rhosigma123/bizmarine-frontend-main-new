@@ -56,7 +56,7 @@ const GoolgeReviewsCard: React.FC<TestimonialsCardProps> = ({ data }) => {
         <AiOutlineStar />
       </div>
 
-      <p className="text-base font-medium text-secondary line-clamp-3 ">
+      <p className="text-base font-medium text-secondary  md:line-clamp-7 ">
         Crafting a sustainable future through advanced solutions in energy,
         automation, & digital transformation.
       </p>

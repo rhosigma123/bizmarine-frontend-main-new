@@ -18,7 +18,7 @@ const NotFoud = () => {
     // </div>
 
     <section className="w-full relative h-[80vh] biz__container gap-5 flex flex-col items-center justify-center ">
-      <p className="text-lg font-meidum text-secondary">
+      <p className="text-lg text-center font-meidum text-secondary">
         {" "}
         Oops! It looks like you&apos;ve taken a wrong turn. Don&apos;t worry, we&apos;ll help
         <br />

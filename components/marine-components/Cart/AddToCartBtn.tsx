@@ -105,7 +105,7 @@ const AddToCartBtn: React.FC<AddToCartBtnProps> = ({ className, product }) => {
         //   <BiCartDownload className="text-xl hidden sm:block" />
         //   Add to Cart
         // </Button>
-        <span className="w-full relative gap-4 h-fit flex items-center justify-between ">
+        <span className="w-full relative gap-2 md:gap-4 h-fit flex items-center justify-between ">
           <Button
             onClick={handleAddToCart}
             className="w-full relative py-1 px-3 rounded-lg bg-primary text-white hover:text-primary hover:bg-white border border-primary flex items-senter justify-center cursor-pointer"
@@ -114,21 +114,21 @@ const AddToCartBtn: React.FC<AddToCartBtnProps> = ({ className, product }) => {
           </Button>
           {wishlistdataExist && (
             <span
-              className={`w-fit relative h-fit rounded-full bg-heartbg p-2    `}
+              className={`w-fit relative h-fit rounded-full bg-heartbg p-1 md:p-2    `}
               onClick={() => removeFromWishlist(product.id)}
             >
-              <IoHeartDislikeOutline
-                className={`text-[24px]  cursor-pointer text-red-600 `}
+              <CiHeart
+                className={` text-[26px] md:text-[24px]  cursor-pointer text-red-600 `}
               />
             </span>
           )}
           {!wishlistdataExist && (
             <span
-              className={`w-fit relative h-fit rounded-full bg-heartbg p-2    `}
+              className={`w-fit relative h-fit rounded-full bg-heartbg p-1 md:p-2    `}
               onClick={() => addToWishlist(product)}
             >
               <CiHeart
-                className={`text-[25px]  cursor-pointer ${
+                className={` text-[26px] md:text-[25px]  cursor-pointer ${
                   wishlistdataExist ? "text-red-700" : "text-black"
                 } `}
               />

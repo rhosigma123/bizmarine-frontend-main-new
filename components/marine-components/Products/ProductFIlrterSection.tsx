@@ -103,7 +103,7 @@ function ProductFIlrterSection({
             >
               {data?.products?.map((item, index) => (
                 <SwiperSlide
-                  className="max-w-fit relative h-auto flex items-center justify-center"
+                  className="max-w-fit relative h-full flex items-center justify-center"
                   key={index}
                 >
                   <NewProductGridCard

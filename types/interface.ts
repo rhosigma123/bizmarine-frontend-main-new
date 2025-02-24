@@ -341,12 +341,14 @@ export interface ProductGridCardProps {
   data: Products;
   css?: string;
   wishlist: boolean;
+  imagecs?:string,
 }
 export interface ProductListCardProps {
   data: Products;
 }
 export interface ProductsCardProps {
   data: Products[];
+  cardcss?:string;
   gridView?: boolean;
   listView?: boolean;
 }

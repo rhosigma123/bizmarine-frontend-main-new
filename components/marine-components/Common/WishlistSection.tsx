@@ -8,6 +8,7 @@ import Link from "next/link";
 // import WhishlistCard from "../wishlist/WishlistCard";
 import WishlistCard from "../wishlist/WishlistCard";
 import Commondropdown from "./Commondropdown";
+import NewProductGridCard from "../Products/NewProductGridCard";
 
 interface WishlistState {
   name: string;
@@ -38,7 +39,7 @@ function WishlistSection() {
     <>
       {allwishlist.length <= 0 ? (
         <div className="w-full relative flex-col py-20 h-auto flex items-center justify-center gap-6 ">
-          <h1 className=" text-3xl lg:text-5xl text-primary font-medium ">
+          <h1 className=" text-2xl md:text-3xl lg:text-5xl text-primary font-medium ">
             Your Wishlist Is Empty
           </h1>
           <Link
@@ -67,7 +68,7 @@ function WishlistSection() {
             </Commondropdown>
           </span>
 
-          <section className="w-full relative h-fit grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 ">
+          <section className="w-full relative h-fit grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap- md:gap-5 ">
             {allwishlist.map((item, index) => (
               <WishlistCard data={item} key={index} />
             ))}
