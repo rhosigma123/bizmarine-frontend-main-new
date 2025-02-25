@@ -68,7 +68,7 @@ function WishlistSection() {
             </Commondropdown>
           </span>
 
-          <section className="w-full relative h-fit grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap- md:gap-5 ">
+          <section className="w-full relative h-fit grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 md:gap-5 ">
             {allwishlist.map((item, index) => (
               <WishlistCard data={item} key={index} />
             ))}

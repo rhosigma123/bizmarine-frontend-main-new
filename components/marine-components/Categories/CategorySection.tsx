@@ -39,13 +39,7 @@ function CategorySection({ title }: CardSectionProps) {
           <section className="w-full  relative h-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-4 md:gap-5 gap-2 ">
             {data?.category?.map((item, index) => (
               <CategoryCard
-                data={{
-                  slug: `${item.slug}`,
-                  image: `${item.image}`,
-                  alt_tag: `${item.alt_tag}`,
-                  name: `${item.name}`,
-                  totalProducts: `${data.category.length}`,
-                }}
+                data={{...item,totalProducts:"20"}}
                 key={index}
               />
             ))}

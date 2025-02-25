@@ -28,7 +28,6 @@ const NumberOfProducts: React.FC<NumberOfProductsProps> = ({
     console.log("Selected value:", value);
   };
 
-
   useEffect(() => {
     updateQuantity(count);
     const existingCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
@@ -41,7 +40,6 @@ const NumberOfProducts: React.FC<NumberOfProductsProps> = ({
     }
   }, [count, product.id, updateQuantity]);
 
- 
   return (
     <div className="flex items-center md:gap-2  h-auto w-full">
       {/* <Button
@@ -58,10 +56,12 @@ const NumberOfProducts: React.FC<NumberOfProductsProps> = ({
         +
       </Button> */}
 
-      <select name="cars"
-      onChange={handleChange}
-      value={count}
-       className=" px-2 md:px-3 mr-1 md:mr-3  block  border  relative text-secondary py-1 ">
+      <select
+        name="cars"
+        onChange={handleChange}
+        value={count}
+        className=" px-2 md:px-3 mr-1 md:mr-3  block  border  relative text-secondary py-1 "
+      >
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>

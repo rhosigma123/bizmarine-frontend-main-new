@@ -261,8 +261,8 @@ export interface ViewproductCard {
   css?:string
 }
 export interface CategoryCardInterface {
-  slug: any;
-  alt_tag: any;
+  slug: string;
+  alt_tag: string;
   image: string;
   name: string;
   totalProducts: string;

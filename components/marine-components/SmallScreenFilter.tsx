@@ -53,7 +53,7 @@ const SmallScreenFilter = () => {
           <SheetTitle className="w-full relative h-auto text-2xl font-medium border-b py-5 px-2 text-foreground ">
             Filter For Products
           </SheetTitle>
-          <SheetDescription className="w-full relative h-auto p-5 flex ">
+          <SheetDescription className="w-full relative h-[90vh] p-5 flex overflow-auto  " id="style-3">
             <div className="grid gap-3 w-full h-fit lg:sticky top-20 bg-background   self-start">
               <CategoryCollapsibel data={categoryData} name="Categories" />
               <CategoryCollapsibel

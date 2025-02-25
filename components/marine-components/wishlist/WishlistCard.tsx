@@ -17,7 +17,7 @@ const WishlistCard: React.FC<wishlistinterface> = ({data}) => {
         href={`/products/${data.slug}`}
       >
         <Image
-          className={` w-full p-1 relative  border rounded-md max-w-full object-contain h-[150px] md:h-[200px] `}
+          className={` w-full p-1 relative  border rounded-md max-w-full object-contain 2xl:object-cover h-[110px] sm:h-[150px] md:h-[200px] `}
           src={`${BASE_URL}${data.image || ""}`}
           // src="/Drone-image.png"
           width={100}
@@ -25,7 +25,7 @@ const WishlistCard: React.FC<wishlistinterface> = ({data}) => {
           alt={data.alt_tag||""}
         />
         <div className="w-full relative h-auto flex flex-col items-start gap-1">
-          <h3 className=" text-sm md:text-base leading-5 line-clamp-3 font-medium text-foreground">
+          <h3 className=" text-sm md:text-base leading-5  font-medium line-clamp-2 text-foreground">
             {data.name}
           </h3>
           {data?.price && (

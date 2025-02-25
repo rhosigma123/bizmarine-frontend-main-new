@@ -109,7 +109,7 @@ const SingleProduct = () => {
     <>
       <div className=" pb-5 md:py-10 biz__container grid gap-10">
         <div className=" grid h-full lg:grid-cols-[1.5fr_1fr] gap-5 lg:gap-10">
-          <section className=" h-full relative flex flex-col  gap-10 md:sticky p-5 top-10 bg-white rounded-xl ">
+          <section className=" h-fit relative flex flex-col   gap-3 md:sticky p-5 top-10 bg-white rounded-xl ">
             <span className="w-fit relative flex flex-col items-start gap-1   ">
               <h1 className=" text-base md:text-xl lg:text-2xl font-semibold text-primary ">
                 {data.name}

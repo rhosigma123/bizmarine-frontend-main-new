@@ -118,7 +118,7 @@ const AddToCartBtn: React.FC<AddToCartBtnProps> = ({ className, product }) => {
               onClick={() => removeFromWishlist(product.id)}
             >
               <CiHeart
-                className={` text-[26px] md:text-[24px]  cursor-pointer text-red-600 `}
+                className={` text-[26px] md:text-[25px] cursor-pointer text-red-600 `}
               />
             </span>
           )}
